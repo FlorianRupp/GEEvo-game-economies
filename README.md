@@ -33,7 +33,7 @@ possible values of a specific node's resources at a specific time step.
 
 ## Examples
 
-Examples on how to generate, simulate, plot, and balance graphs can be found in the demo Jupyter notebook.
+Examples on how to generate, simulate, plot, and balance graphs can be found in the demo Jupyter notebook (``demo.ipynb``).
 
 
 ## Limitations
