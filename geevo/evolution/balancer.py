@@ -4,7 +4,7 @@ from geevo.nodes import *
 
 class Balancer:
     def __init__(self, config, edge_list, balance_pool_ids, pop_size=10, n_sim=10, n_sim_steps=100, frozen_weights=None,
-                 balance_value=30, threshold=0.99):
+                 balance_value=30, alpha=0.01):
         self.config = config
         self.edge_list = edge_list
         self.monitor = self.monitor = {"best": [], "avg": []}
@@ -17,7 +17,7 @@ class Balancer:
         self.result = None
         self.balance_pool_ids = balance_pool_ids
         self.balance_value = balance_value
-        self.threshold = threshold
+        self.threshold = 1 - alpha
 
     def init_ind(self):
         g = Graph(config=self.config, edge_list=self.edge_list)
