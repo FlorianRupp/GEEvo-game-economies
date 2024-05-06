@@ -3,7 +3,16 @@
 This is the code repository for the GEEvo Framework (Game Economy Evolution) introduced in **Florian Rupp et al.**: _GEEvo: Game Economy Generation and Balancing using Evolutionary Algorithms_, IEEE Congress on Evolutionary Computation, 2024.
 If you use this code in your work please cite:
 ```
-Bibtex goes here
+@inproceedings{rupp_geevo_2024,
+	title = {{GEEvo}: {Game} {Economy} {Generation} and {Balancing} with {Evolutionary} {Algorithms}},
+	shorttitle = {{GEEvo}},
+	url = {http://arxiv.org/abs/2404.18574},
+	author = {Rupp, Florian and Eckert, Kai},
+        booktitle = {{IEEE} {Congress} on {Evolutionary Computation} ({CEC})},
+	year = {2024},
+	note = {arXiv:2404.18574} ,
+        pages = {to appear}
+}
 ```
 
 <div style="display: flex; flex-direction: row;">
