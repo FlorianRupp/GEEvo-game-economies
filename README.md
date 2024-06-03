@@ -16,8 +16,10 @@ If you use this code in your work please cite:
 ```
 
 <div style="display: flex; flex-direction: row;">
+<p align="center">
     <img src="img/mage.png" alt="Mage Economy" style="width: 44%; margin-right: 10px;">
     <img src="img/archer.png" alt="Archer Economy" style="width: 49%; margin-right: 10px;">
+</p>
 </div>
 
 
