@@ -1,19 +1,7 @@
 # GEEvo: Game Economy Evolution
 
 This is the code repository for the GEEvo Framework (Game Economy Evolution) introduced in **Florian Rupp et al.**: _GEEvo: Game Economy Generation and Balancing using Evolutionary Algorithms_, IEEE Congress on Evolutionary Computation, 2024.
-If you use this code in your work please cite:
-```
-@inproceedings{rupp_geevo_2024,
-	title = {{GEEvo}: {Game} {Economy} {Generation} and {Balancing} with {Evolutionary} {Algorithms}},
-	shorttitle = {{GEEvo}},
-	url = {http://arxiv.org/abs/2404.18574},
-	author = {Rupp, Florian and Eckert, Kai},
-        booktitle = {{IEEE} {Congress} on {Evolutionary Computation} ({CEC})},
-	year = {2024},
-	note = {arXiv:2404.18574} ,
-        pages = {to appear}
-}
-```
+
 
 <div style="display: flex; flex-direction: row;">
 <p align="center">
@@ -40,6 +28,18 @@ defining how many resources should be generated in that node after how many simu
 Since the graphs may contain probabilistic elements, a graph's fitness is evaluated
 simulation-driven. This can be understood as sampling from the distribution of resources
 possible values of a specific node's resources at a specific time step.
+
+If you use this code in your work please cite:
+```
+@inproceedings{rupp_geevo_2024,
+    title = {{GEEvo}: {Game} {Economy} {Generation} and {Balancing} with {Evolutionary} {Algorithms}},
+    author = {Rupp, Florian and Eckert, Kai},
+    booktitle = {{IEEE} {Congress} on {Evolutionary Computation} ({CEC})},
+    year = {2024},
+    url = {http://arxiv.org/abs/2404.18574},
+    pages = 1-8
+}
+```
 
 
 ## Examples
