@@ -8,10 +8,18 @@ import numpy as np
 class Edge:
     def __init__(self, node, value, name=None, node_id=None):
         self.value = value
+        self.init_value = value
         self.node = node
         if name is not None:
             self.node.name = name
         self.node_id = node_id
+
+        self.input_state_connections = []
+        self.output_state_connections = []
+
+    def connect(self, register):
+        assert isinstance(register, Register), "Argument is not of type register"
+        self.output_state_connections.append(StateConnection())
 
 
 class Node(ABC):
@@ -221,6 +229,50 @@ class Drain(Pool):
                 self.pool += input_e.value
 
 
+class StateConnectionPoolRegister:
+    def __init__(self, variable_name, output_pool, register_input):
+        self.variable_name = variable_name
+        self.output_pool = output_pool
+        self.register_input = register_input
+
+
+class StateConnectionRegisterEdge:
+    def __init__(self, variable_name, output_register, edge_input, modifier):
+        self.variable_name = variable_name
+        self.output_register = output_register
+        self.edge_input = edge_input
+        self.modifier = modifier
+
+
+class Register:
+    EMPTY_INPUT = False
+    EMPTY_OUTPUT = False
+    MAX_INPUT = 2
+    MAX_OUTPUT = 1
+    COLOR = "black"
+
+    def __init__(self, condition, name=None, id=None):
+        self.name = name
+        self.input_state_connection = {}
+        self.output_state_connection = {}
+        self.id = id
+        self.condition = condition
+
+    def step(self, call_chain):
+        if self.eval_condition() is True:
+            for conn in self.output_state_connection:
+                conn.edge_input.value = conn.modifier
+        else:
+            for conn in self.output_state_connection:
+                conn.edge_input.value = conn.edge_input.init_value
+
+    def eval_condition(self):
+        cond = self.condition
+        for variable, connection in self.input_state_connection.items():
+            cond = cond.replace(variable, str(connection.output_pool.value))
+        return eval(cond)
+
+
 class Result(Pool):
     def step(self):
         pass
@@ -240,3 +292,6 @@ Result.ALLOWED_INPUT = [Converter]
 Result.ALLOWED_OUTPUT = []
 FixedPool.ALLOWED_INPUT = [Source, RandomGate, Converter]
 FixedPool.ALLOWED_OUTPUT = [Converter, Drain]
+
+Register.ALLOWED_INPUT = [StateConnectionPoolRegister]
+Register.ALLOWED_OUTPUT = [StateConnectionRegisterEdge]
