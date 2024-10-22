@@ -202,3 +202,23 @@ class Graph2:
 
     def get_nodes_of(self, node_type):
         return [n for n in self.nodes if isinstance(n, node_type)]
+
+
+class Graph3(Graph2):
+    # also supports State Connections and Registers
+    def __init__(self, config, edge_list, registers, weights=None):
+        super().__init__(config, edge_list, weights=weights)
+
+        # connect registers with pools and edges
+        self.registers = registers
+        for r in self.registers:
+            for inp in r.input_state_connection:
+                inp.output_pool = self.nodes[inp.output_pool_id]
+                inp.register_input = r
+            for out in r.output_state_connection:
+                out.register_output = r
+                out.edge_input = self.nodes[out.edge_input[0]].get_edge_to(out.edge_input[1])
+
+
+
+

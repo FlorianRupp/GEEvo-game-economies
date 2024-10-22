@@ -14,13 +14,6 @@ class Edge:
             self.node.name = name
         self.node_id = node_id
 
-        self.input_state_connections = []
-        self.output_state_connections = []
-
-    def connect(self, register):
-        assert isinstance(register, Register), "Argument is not of type register"
-        self.output_state_connections.append(StateConnection())
-
 
 class Node(ABC):
     ALLOWED_INPUT = []
@@ -102,6 +95,8 @@ class Node(ABC):
             score -= 1
         return score
 
+    def get_edge_to(self, node):
+        return [e for e in self.output_edges if e.node == node][0]
 
 class Source(Node):
     EMPTY_INPUT = True
@@ -230,17 +225,21 @@ class Drain(Pool):
 
 
 class StateConnectionPoolRegister:
-    def __init__(self, variable_name, output_pool, register_input):
+    def __init__(self, variable_name, output_pool_id, register_input_id):
         self.variable_name = variable_name
-        self.output_pool = output_pool
-        self.register_input = register_input
+        self.output_pool_id = output_pool_id
+        self.register_input_id = register_input_id
+        self.output_pool = None
+        self.register_input = None
 
 
 class StateConnectionRegisterEdge:
-    def __init__(self, variable_name, output_register, edge_input, modifier):
-        self.variable_name = variable_name
-        self.output_register = output_register
-        self.edge_input = edge_input
+    def __init__(self, output_register_id, edge_input_id, modifier):
+        # self.variable_name = variable_name
+        self.output_register_id = output_register_id
+        self.edge_input_id = edge_input_id
+        self.output_register = None
+        self.edge_input = None
         self.modifier = modifier
 
 
@@ -254,11 +253,11 @@ class Register:
     def __init__(self, condition, name=None, id=None):
         self.name = name
         self.input_state_connection = {}
-        self.output_state_connection = {}
+        self.output_state_connection = []
         self.id = id
         self.condition = condition
 
-    def step(self, call_chain):
+    def step(self):
         if self.eval_condition() is True:
             for conn in self.output_state_connection:
                 conn.edge_input.value = conn.modifier
@@ -271,6 +270,12 @@ class Register:
         for variable, connection in self.input_state_connection.items():
             cond = cond.replace(variable, str(connection.output_pool.value))
         return eval(cond)
+
+    def add_input(self, inp):
+        self.input_state_connection[inp.variable_name] = inp
+
+    def add_output(self, out):
+        self.output_state_connection.append(out)
 
 
 class Result(Pool):
