@@ -212,12 +212,14 @@ class Graph3(Graph2):
         # connect registers with pools and edges
         self.registers = registers
         for r in self.registers:
-            for inp in r.input_state_connection:
+            for v, inp in r.input_state_connection.items():
                 inp.output_pool = self.nodes[inp.output_pool_id]
                 inp.register_input = r
+                # append register to fixed pool
+                self.nodes[inp.output_pool_id].registers.append(r)
             for out in r.output_state_connection:
                 out.register_output = r
-                out.edge_input = self.nodes[out.edge_input[0]].get_edge_to(out.edge_input[1])
+                out.edge_input = self.nodes[out.edge_input_id[0]].get_edge_to(self.nodes[out.edge_input_id[1]])
 
 
 

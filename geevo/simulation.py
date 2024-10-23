@@ -1,13 +1,14 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 
-from geevo.nodes import Pool, Source, Converter
+from geevo.nodes import Pool, Source, Converter, FixedPool, FixedPoolLimit
 
 
 class Simulator:
     def __init__(self, graph):
         self.graph = graph
-        self.monitoring = {p: [] for p in self.graph if isinstance(p, Pool)}
+        self.monitoring = {p: [] for p in self.graph if
+                           isinstance(p, Pool) or isinstance(p, FixedPool) or isinstance(p, FixedPoolLimit)}
         self.pools = [n for n in self.graph if isinstance(n, Pool)]
         self.sources = [n for n in self.graph if isinstance(n, Source)]
         self.converters = [n for n in self.graph if isinstance(n, Converter)]
