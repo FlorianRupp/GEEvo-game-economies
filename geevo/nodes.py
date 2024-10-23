@@ -79,9 +79,12 @@ class Node(ABC):
         pass
 
     def __str__(self):
-        input_edges = [type(e.node).__name__ for e in self.input_edges]
-        output_edges = [type(e.node).__name__ for e in self.output_edges]
-        return f"{type(self).__name__}: [input: {input_edges}, output: {output_edges}]"
+        input_edges = [f"{type(e.node).__name__}-{e.node.id}" for e in self.input_edges]
+        output_edges = [f"{type(e.node).__name__}-{e.node.id}" for e in self.output_edges]
+        if self.name is not None:
+            return f"{self.name}: [input: {input_edges}, output: {output_edges}]"
+        else:
+            return f"{type(self).__name__}-{self.id}: [input: {input_edges}, output: {output_edges}]"
 
     def update_edge_value(self, node, value):
         [e for e in self.output_edges if e.node == node][0].value = value
@@ -133,7 +136,13 @@ class Pool(Node):
             return
         call_chain.append(self)
         for edge in self.output_edges:
-            edge.node.consume(call_chain)
+            try:
+                edge.node.consume(call_chain)
+            except TypeError as e:
+                print(e)
+                print(edge.node)
+                print(call_chain)
+
 
     def consume(self, value, call_chain):
         self.pool += value
@@ -163,8 +172,8 @@ class FixedPool(Pool):
 
 
 class FixedPoolLimit(Pool):
-    def __init__(self, name=None, lower=0, upper=100):
-        super().__init__(name)
+    def __init__(self, name=None, id=None, lower=0, upper=100):
+        super().__init__(name, id)
         self.lower = lower
         self.upper = upper
         self.registers = []
@@ -298,7 +307,6 @@ class Register:
         cond = self.condition
         for variable, connection in self.input_state_connection.items():
             cond = cond.replace(variable, str(connection.output_pool.pool))
-            print("Eval cond:", cond, eval(cond))
         return eval(cond)
 
     def add_input(self, inp):
@@ -319,14 +327,16 @@ Pool.ALLOWED_INPUT = [Source, RandomGate, Converter]
 Pool.ALLOWED_OUTPUT = [Converter, Drain]
 Converter.ALLOWED_INPUT = [Pool, FixedPool, FixedPoolLimit, RandomGate]
 Converter.ALLOWED_OUTPUT = [Pool, RandomGate, FixedPool, FixedPoolLimit]
-RandomGate.ALLOWED_INPUT = [Source, Converter]
-RandomGate.ALLOWED_OUTPUT = [Pool, Converter, FixedPoolLimit]
-Drain.ALLOWED_INPUT = [Pool]
+RandomGate.ALLOWED_INPUT = [Source, Converter, FixedPoolLimit]
+RandomGate.ALLOWED_OUTPUT = [Pool, Converter, FixedPoolLimit, Drain]
+Drain.ALLOWED_INPUT = [Pool, FixedPool, FixedPoolLimit, RandomGate]
 Drain.ALLOWED_OUTPUT = []
 Result.ALLOWED_INPUT = [Converter]
 Result.ALLOWED_OUTPUT = []
 FixedPool.ALLOWED_INPUT = [Source, RandomGate, Converter]
 FixedPool.ALLOWED_OUTPUT = [Converter, Drain]
+FixedPoolLimit.ALLOWED_INPUT = [Source, RandomGate, Converter]
+FixedPoolLimit.ALLOWED_OUTPUT = [Converter, Drain, RandomGate]
 
 Register.ALLOWED_INPUT = [StateConnectionPoolRegister]
 Register.ALLOWED_OUTPUT = [StateConnectionRegisterEdge]

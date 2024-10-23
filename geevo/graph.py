@@ -133,11 +133,16 @@ class Graph2:
                 nodes.extend([k() for _ in range(v)])
             else:
                 for _ in range(v):
-                    nodes.append(k(name=f"{k.__name__}-{count}"))
+                    nodes.append(k(name=f"{k.__name__}-{count}", id=count))
                     count += 1
 
         for idx, edge in enumerate(self.edge_list):
-            nodes[edge[0]].connect(nodes[edge[1]], self.weights[idx])
+            try:
+                nodes[edge[0]].connect(nodes[edge[1]], self.weights[idx])
+            except ValueError as e:
+                print(e)
+                print(edge)
+                raise e
 
         # check probs of random gates
         for gate in [n for n in nodes if isinstance(n, RandomGate)]:
@@ -146,6 +151,9 @@ class Graph2:
             edge_values_scaled = [v / values_sum for v in edge_values]
             for e, v in zip(gate.output_edges, edge_values_scaled):
                 e.value = v
+
+        for n in nodes:
+            print(n)
         return nodes
 
     def save(self, file="graph.pkl"):
@@ -181,7 +189,7 @@ class Graph2:
         plt.figure(figsize=figsize)
 
         if node_labels is None:
-            node_labels = {idx: f"{type(node).__name__}-{idx}" for idx, node in enumerate(self.nodes)}
+            node_labels = {idx: f"{node.name}" for idx, node in enumerate(self.nodes)}
         node_colors = [self.nodes[idx].COLOR for idx in g.nodes]
         nx.draw(g, pos=pos, with_labels=True, font_weight='bold', node_size=700, node_color=node_colors,
                 font_color='black', font_size=10, labels=node_labels, arrows=True)
