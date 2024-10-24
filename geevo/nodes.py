@@ -338,9 +338,24 @@ class Register:
         self.output_state_connection.append(out)
 
 
-class Result(Pool):
-    def step(self):
-        pass
+class WinStates:
+    PLAYER_LOST = 0
+    PLAYER_WINS = 1
+
+
+class EndCondition:
+    def __init__(self, node, node_id, condition, return_if_true):
+        self.node = node
+        self.node_id = node_id
+        self.condition = condition
+        self.return_if_true = return_if_true
+
+    def evaluate(self):
+        condition = self.condition.replace(self.node.name, str(self.node.pool))
+        if eval(condition) is True:
+            return self.return_if_true
+        else:
+            return None
 
 
 Source.ALLOWED_INPUT = []
@@ -353,8 +368,6 @@ RandomGate.ALLOWED_INPUT = [Source, Converter, FixedPoolLimit]
 RandomGate.ALLOWED_OUTPUT = [Pool, Converter, FixedPoolLimit, Drain]
 Drain.ALLOWED_INPUT = [Pool, FixedPool, FixedPoolLimit, RandomGate]
 Drain.ALLOWED_OUTPUT = []
-Result.ALLOWED_INPUT = [Converter]
-Result.ALLOWED_OUTPUT = []
 FixedPool.ALLOWED_INPUT = [Source, RandomGate, Converter]
 FixedPool.ALLOWED_OUTPUT = [Converter, Drain]
 FixedPoolLimit.ALLOWED_INPUT = [Source, RandomGate, Converter]
