@@ -137,12 +137,13 @@ class Pool(Node):
         call_chain.append(self)
         for edge in self.output_edges:
             try:
-                edge.node.consume(call_chain)
+                # skip drains because they pull themselves in simulation step
+                if not isinstance(edge.node, Drain):
+                    edge.node.consume(call_chain)
             except TypeError as e:
                 print(e)
                 print(edge.node)
                 print(call_chain)
-
 
     def consume(self, value, call_chain):
         self.pool += value
@@ -165,8 +166,8 @@ class FixedPool(Pool):
             self.pool += value
 
         # evaluate condition of registers
-        for r in self.registers:
-            r.step()
+        # for r in self.registers:
+        #     r.step()
 
         self.step(call_chain)
 
@@ -187,8 +188,8 @@ class FixedPoolLimit(Pool):
             self.pool += value
 
         # evaluate condition of registers
-        for r in self.registers:
-            r.step()
+        # for r in self.registers:
+        #     r.step()
 
         self.step(call_chain)
 
@@ -261,6 +262,16 @@ class Drain(Pool):
                 input_e.node.pool -= input_e.value
                 self.pool += input_e.value
 
+    def pull(self):
+        for input_e in self.input_edges:
+            # only drain resources if there are enough available
+            # print(self.name, "pulling", input_e.value, "of", input_e.node)
+            if input_e.node.pool >= input_e.value:
+                input_e.node.pool -= input_e.value
+                self.pool += input_e.value
+            else:
+                input_e.node.pool = 0
+
 
 class StateConnectionPoolRegister:
     def __init__(self, variable_name, output_pool_id, register_input_id):
@@ -278,6 +289,7 @@ class StateConnectionRegisterEdge:
         self.edge_input_id = edge_input_id
         self.output_register = None
         self.edge_input = None
+        self.node_output = None
         self.modifier = modifier
 
 
@@ -298,15 +310,25 @@ class Register:
     def step(self):
         if self.eval_condition() is True:
             for conn in self.output_state_connection:
-                conn.edge_input.value = conn.modifier
+                # Drains pull, sources push. We have to set the weight therefore differently for in/out edge
+                if isinstance(conn.edge_input.node, Drain):
+                    conn.edge_input.node.input_edges[0].value = conn.modifier
+
+                else:
+                    conn.node_output.output_edges[0].value = conn.modifier
         else:
             for conn in self.output_state_connection:
-                conn.edge_input.value = conn.edge_input.init_value
+                if isinstance(conn.edge_input.node, Drain):
+                    conn.edge_input.node.input_edges[0].value = conn.edge_input.init_value
+                else:
+                    conn.node_output.output_edges[0].value = conn.edge_input.init_value
 
     def eval_condition(self):
         cond = self.condition
         for variable, connection in self.input_state_connection.items():
             cond = cond.replace(variable, str(connection.output_pool.pool))
+
+        # print(self.name, cond, eval(cond))
         return eval(cond)
 
     def add_input(self, inp):

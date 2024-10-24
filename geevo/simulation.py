@@ -1,22 +1,32 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
-
-from geevo.nodes import Pool, Source, Converter, FixedPool, FixedPoolLimit
+from geevo.nodes import Pool, Source, Converter, FixedPool, FixedPoolLimit, Drain
 
 
 class Simulator:
-    def __init__(self, graph):
+    def __init__(self, graph, registers=None):
         self.graph = graph
+        self.registers = registers
         self.monitoring = {p: [] for p in self.graph if
                            isinstance(p, Pool) or isinstance(p, FixedPool) or isinstance(p, FixedPoolLimit)}
         self.pools = [n for n in self.graph if isinstance(n, Pool)]
         self.sources = [n for n in self.graph if isinstance(n, Source)]
         self.converters = [n for n in self.graph if isinstance(n, Converter)]
+        self.drains = [n for n in self.graph if isinstance(n, Drain)]
 
     def run(self, steps=10):
-        for _ in range(steps):
+        for i in range(steps):
+            # print("-"*4, i, "-"*4)
+            if self.registers is not None:
+                for r in self.registers:
+                    r.step()
+
             for source in self.sources:
                 source.step([])
+
+            for drain in self.drains:
+                drain.pull()
+
             self.monitor()
 
             # reset converters
@@ -29,7 +39,7 @@ class Simulator:
 
     def monitor(self):
         for node in self.graph:
-            if isinstance(node, Pool):
+            if isinstance(node, Pool) or isinstance(node, FixedPoolLimit):
                 self.monitoring[node].append(node.pool)
 
     def plot_monitor(self, drains=True, figsize=(10, 7), labels=None, save=False, filename="plots/graph.png",

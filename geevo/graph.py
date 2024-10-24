@@ -152,8 +152,8 @@ class Graph2:
             for e, v in zip(gate.output_edges, edge_values_scaled):
                 e.value = v
 
-        for n in nodes:
-            print(n)
+        # for n in nodes:
+        #     print(n)
         return nodes
 
     def save(self, file="graph.pkl"):
@@ -228,7 +228,12 @@ class Graph3(Graph2):
             for out in r.output_state_connection:
                 out.register_output = r
                 out.edge_input = self.nodes[out.edge_input_id[0]].get_edge_to(self.nodes[out.edge_input_id[1]])
+                out.node_output = self.nodes[out.edge_input_id[0]]
 
+    def simulate(self, steps=50):
+        self.simulator = Simulator(self.nodes, self.registers)
+        self.simulator.run(steps=steps)
+        return self.simulator.monitoring
 
 
 
