@@ -230,10 +230,46 @@ class Graph3(Graph2):
                 out.edge_input = self.nodes[out.edge_input_id[0]].get_edge_to(self.nodes[out.edge_input_id[1]])
                 out.node_output = self.nodes[out.edge_input_id[0]]
 
-    def simulate(self, steps=50):
+    def simulate(self, steps=50, win_conditions=None):
         self.simulator = Simulator(self.nodes, self.registers)
-        self.simulator.run(steps=steps)
-        return self.simulator.monitoring
+        win_loose = self.simulator.run(steps=steps, win_conditions=win_conditions)
+        game_length = len(list(self.simulator.monitoring.values())[0])
+        return self.simulator.monitoring, win_loose, game_length
+
+    def plot(self, figsize=(10, 4.5), save=False, filename="plots/graph.png", node_labels=None, edge_labels=None, pos=None, label_pos=None):
+        g = nx.DiGraph()
+        g.add_edges_from(sorted(self.edge_list))
+        if pos is None:
+            try:
+                pos = nx.planar_layout(g, scale=10)
+            except nx.NetworkXException:
+                print("Graph is probably not planar, so I choose spring layout for plotting.")
+                pos = nx.spring_layout(g)
+            print(pos)
+        plt.figure(figsize=figsize)
+
+        if node_labels is None:
+            node_labels = {idx: f"{node.name}" for idx, node in enumerate(self.nodes)}
+        node_colors = [self.nodes[idx].COLOR for idx in g.nodes]
+
+        if label_pos is None:
+            nx.draw(g, pos=pos, with_labels=True, font_weight='bold', node_size=700, node_color=node_colors,
+                    font_color='black', font_size=14, labels=node_labels, arrows=True)
+        else:
+            nx.draw(g, pos=pos, font_weight='bold', node_size=700, node_color=node_colors, arrows=True)
+            nx.draw_networkx_labels(g, pos=label_pos, font_color='black', font_size=16, labels=node_labels)
 
 
+        if edge_labels is None:
+            edge_labels = {}
+            for i in range(len(self.nodes)):
+                for o in self.nodes[i].output_edges:
+                    edge_labels[(i, self.nodes.index(o.node))] = round(o.value, 2)
 
+        nx.draw_networkx_edge_labels(g, pos=pos, edge_labels=edge_labels, font_size=14)
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        plt.tight_layout()
+
+        if save is True:
+            plt.savefig(filename, dpi=300)
+        plt.show()

@@ -14,7 +14,7 @@ class Simulator:
         self.converters = [n for n in self.graph if isinstance(n, Converter)]
         self.drains = [n for n in self.graph if isinstance(n, Drain)]
 
-    def run(self, steps=10):
+    def run(self, steps=10, win_conditions=None):
         for i in range(steps):
             # print("-"*4, i, "-"*4)
             if self.registers is not None:
@@ -32,10 +32,16 @@ class Simulator:
             # reset converters
             for c in self.converters:
                 c.called = False
+
+            if win_conditions is not None:
+                for cond in win_conditions:
+                    res = cond.evaluate()
+                    if res is not None:
+                        return res
             # for p in self.pools:
             #     p.called = 0
         # reset pool values after simulation
-        [p.reset() for p in self.pools]
+        # [p.reset() for p in self.pools]
 
     def monitor(self):
         for node in self.graph:
