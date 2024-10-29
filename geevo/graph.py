@@ -234,7 +234,8 @@ class Graph3(Graph2):
         self.simulator = Simulator(self.nodes, self.registers)
         win_loose = self.simulator.run(steps=steps, win_conditions=win_conditions)
         game_length = len(list(self.simulator.monitoring.values())[0])
-        return self.simulator.monitoring, win_loose, game_length
+        monitoring = {k.name: v for k, v in self.simulator.monitoring.items()}
+        return monitoring, win_loose, game_length
 
     def plot(self, figsize=(10, 4.5), save=False, filename="plots/graph.png", node_labels=None, edge_labels=None, pos=None, label_pos=None):
         g = nx.DiGraph()
