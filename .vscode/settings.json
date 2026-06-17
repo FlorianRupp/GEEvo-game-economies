@@ -1,0 +1,30 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk_Tugas_Akhir",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%DIR%",
+                "%DOC%"
+            ],
+            "env": {},
+            "cwd": "%DIR%/../.."
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Compile Tugas Akhir (latexmk)",
+            "tools": [
+                "latexmk_Tugas_Akhir"
+            ]
+        }
+    ],
+    "latex-workshop.latex.outDir": "%DIR%",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "onFileChange",
+    "latex-workshop.latex.rootFile.doNotPrompt": true
+}

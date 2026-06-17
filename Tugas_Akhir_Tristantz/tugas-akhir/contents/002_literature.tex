@@ -1,0 +1,429 @@
+\chapter{Tinjauan Pustaka}\label{ch:literature}
+
+\section{Penelitian Terdahulu}\label{sec:past research}
+
+Keseimbangan sistem reward dalam ekonomi gim merupakan faktor penting dalam menjaga kualitas pengalaman bermain. Sistem reward yang tidak seimbang dapat menyebabkan pemain kehilangan motivasi, mengalami kebosanan, atau merasa frustrasi, sehingga berdampak pada keberlanjutan permainan \citep{Holmberg2021}. Desain ekonomi gim, termasuk mekanisme pemberian hadiah, progresi level, dan distribusi sumber daya virtual, berpengaruh langsung terhadap dinamika permainan dan kepuasan pemain.
+
+Kompleksitas ekonomi gim modern menyebabkan proses penyeimbangan menjadi sulit dilakukan secara manual. Perubahan kecil pada parameter ekonomi sering kali menimbulkan dampak signifikan dan tidak terduga terhadap keseluruhan sistem \citep{Volz2016}. Oleh karena itu, berbagai penelitian mengusulkan penggunaan algoritma evolusioner untuk mengotomatisasi proses optimasi dan \textit{balancing} sistem \textit{reward}.
+
+\cite{Volz2016} mendemonstrasikan kelayakan \textit{automatic game balancing} melalui optimasi parameter kartu pada permainan kartu menggunakan algoritma evolusioner berbasis simulasi. Pendekatan ini mampu menghasilkan konfigurasi parameter yang seimbang tanpa memerlukan penalaan manual yang ekstensif. Selanjutnya, de Mesentier Silva et al. \cite{deMesentierSilva2019} menerapkan algoritma evolusioner untuk menyeimbangkan meta permainan Hearthstone dengan mengevolusi atribut kartu, sehingga tidak ada strategi yang terlalu dominan.
+
+\cite{garcia2020optimizing} mengembangkan pendekatan optimasi agen gim Hearthstone menggunakan algoritma evolusioner. Penelitian mereka menunjukkan efektivitas algoritma evolusioner dalam mengoptimasi perilaku agen gim melalui proses \textit{co-evolutionary training}. Pendekatan ini relevan dalam konteks optimasi sistem reward adaptif berbasis interaksi pemain, meskipun masih berfokus pada strategi permainan individual dan belum terintegrasi dengan keseluruhan sistem ekonomi gim.
+
+Pada genre lain, \cite{Gravina2016} memperkenalkan \textit{Constraint Surprise Search} untuk menghasilkan senjata yang beragam namun tetap seimbang dalam gim \textit{first person shooter}. Sementara itu, \cite{Morosan2017} menunjukkan bahwa algoritma evolusioner dapat digunakan untuk menyeimbangkan unit dalam gim \textit{real time strategy} dengan menyesuaikan parameter unit secara otomatis.
+
+\cite{sorochan2022generatingrealtimestrategygame} mengembangkan metode berbasis \textit{procedural content generation} (PCG) yang menggabungkan pencarian berbasis Monte Carlo untuk menghasilkan dan menyeimbangkan unit gim strategi secara adaptif. Pendekatan ini menandai pergeseran menuju otomasi desain dengan pemanfaatan algoritma pencarian cerdas. Namun, pendekatan tersebut masih berfokus pada generasi konten gim dan belum mempertimbangkan keseimbangan sistem reward yang berinteraksi langsung dengan perilaku pemain secara komprehensif.
+
+% Sebagian besar penelitian awal berfokus pada komponen permainan secara individual. Namun, \cite{Rogers2023} memperluas pendekatan ini dengan mengoptimasi ekonomi gim secara keseluruhan. Mereka merepresentasikan ekonomi gim sebagai graf alur sumber daya dan menggunakan algoritma evolusioner untuk menargetkan tingkat kompleksitas ekonomi tertentu. Pendekatan ini memungkinkan kontrol yang lebih terstruktur terhadap sistem reward dan ekonomi gim.
+
+Kerangka kerja \textit{Game Economy Evolution} (GEEvo) yang dikembangkan oleh Rupp \& Eckert \cite{Rupp_2024} selanjutnya membagi proses perancangan ekonomi gim menjadi tahap generasi struktur dan tahap optimasi parameter. Algoritma evolusioner digunakan untuk menyesuaikan parameter ekonomi berdasarkan tujuan \textit{balancing} yang ditetapkan, sehingga proses iterasi desain dapat dilakukan secara sistematis dan fleksibel. Meskipun GEEvo telah berhasil mengotomatisasi sebagian proses perancangan ekonomi gim, pendekatan ini masih beroperasi pada tingkat makro tanpa mempertimbangkan variabilitas preferensi dan strategi pemain dalam skala mikro.
+
+Secara keseluruhan, penelitian terdahulu menunjukkan bahwa algoritma evolusioner dan simulasi berbasis agen non-learning merupakan pendekatan yang efektif dalam optimasi sistem reward dan ekonomi gim. Namun, masih terdapat celah penelitian dalam hal integrasi antara adaptivitas perilaku pemain dengan optimasi algoritmik secara evolusioner pada sistem ekonomi gim yang dinamis.
+
+% Keseimbangan sistem \textit{reward} dalam ekonomi gim merupakan faktor penting dalam menjaga kualitas pengalaman bermain. Sistem \textit{reward} yang tidak seimbang dapat menyebabkan pemain kehilangan motivasi, mengalami kebosanan, atau merasa frustrasi, sehingga berdampak pada keberlanjutan permainan \citep{Holmberg2021}. Desain ekonomi gim, termasuk mekanisme pemberian hadiah, progresi level, dan distribusi sumber daya virtual, berpengaruh langsung terhadap dinamika permainan dan kepuasan pemain.
+
+% Kompleksitas ekonomi gim modern menyebabkan proses penyeimbangan menjadi sulit dilakukan secara manual. Perubahan kecil pada parameter ekonomi sering kali menimbulkan dampak signifikan dan tidak terduga terhadap keseluruhan sistem. Oleh karena itu, berbagai penelitian mengusulkan penggunaan algoritma evolusioner untuk mengotomatisasi proses optimasi dan balancing sistem \textit{reward} \citep{Volz2016}.
+
+% \citet{Volz2016} mendemonstrasikan kelayakan \textit{automatic game balancing} melalui optimasi parameter kartu pada permainan kartu menggunakan algoritma evolusioner berbasis simulasi. Pendekatan ini mampu menghasilkan konfigurasi parameter yang seimbang tanpa memerlukan penalaan manual yang ekstensif. Selanjutnya, \citet{deMesentierSilva2019} menerapkan algoritma evolusioner untuk menyeimbangkan meta permainan \textit{Hearthstone} dengan mengevolusi atribut kartu, sehingga tidak ada strategi yang terlalu dominan.
+
+% Pada \textit{genre} lain, \citeauthor{Gravina2016} memperkenalkan \textit{Constraint Surprise Search} untuk menghasilkan senjata yang beragam namun tetap seimbang dalam gim first person shooter. Sementara itu, Morosan dan Poli \citep{Morosan2017} menunjukkan bahwa algoritma evolusioner dapat digunakan untuk menyeimbangkan unit dalam gim \textit{real time strategy} dengan menyesuaikan parameter unit secara otomatis.
+
+% Sebagian besar penelitian awal berfokus pada komponen permainan secara individual. Namun, \citeauthor{Rogers2023} memperluas pendekatan ini dengan mengoptimasi ekonomi gim secara keseluruhan. Mereka merepresentasikan ekonomi gim sebagai graf alur sumber daya dan menggunakan algoritma evolusioner untuk menargetkan tingkat kompleksitas ekonomi tertentu. Pendekatan ini memungkinkan kontrol yang lebih terstruktur terhadap sistem \textit{reward} dan ekonomi gim.
+
+% Kerangka kerja \textit{Game Economy Evolution} (GEEvo) selanjutnya membagi proses perancangan ekonomi gim menjadi tahap generasi struktur dan tahap optimasi parameter. Algoritma evolusioner digunakan untuk menyesuaikan parameter ekonomi berdasarkan tujuan \textit{balancing} yang ditetapkan, sehingga proses iterasi desain dapat dilakukan secara sistematis dan fleksibel \citep{Rupp_2024}.
+
+% Selain itu, simulasi berbasis agen non \textit{learning} digunakan untuk mengevaluasi sistem \textit{reward} terhadap perilaku pemain yang beragam. Agen direpresentasikan melalui aturan dan heuristik tertentu yang mencerminkan berbagai gaya bermain. Dengan menjalankan simulasi berulang, dampak sistem \textit{reward} terhadap progresi pemain dan stabilitas ekonomi dapat dianalisis secara komprehensif \citep{LaraCabrera2014}.
+
+% Secara keseluruhan, penelitian terdahulu menunjukkan bahwa algoritma evolusioner dan simulasi berbasis agen non \textit{learning} merupakan pendekatan yang efektif dalam optimasi sistem \textit{reward} dan ekonomi gim. 
+% Pendekatan ini menyediakan kerangka otomatis dan sistematis untuk mencapai keseimbangan permainan tanpa ketergantungan pada metode pembelajaran mesin. Tabel berikut menyajikan ringkasan dari penjelasan dengan tujuan mengidentifikasi celah penelitian yang masih perlu ditelusuri.
+
+% Definisi simbol centang dan silang
+% \newcommand{\cmark}{\ding{51}} % centang
+% \newcommand{\xmark}{\ding{55}} % silang
+
+% \begin{table}[htbp]
+% \centering
+% \small
+% \caption{Matriks Research Gap Penelitian Terdahulu}
+% \label{tab:research_gap}
+% \resizebox{\textwidth}{!}{
+% \begin{tabular}{|c|l|c|l|c|c|c|}
+% \hline
+% \textbf{No} & \textbf{Peneliti} & \textbf{Tahun} & \textbf{Fokus Penelitian} & 
+% \textbf{\begin{tabular}[c]{@{}c@{}}Integrasi\\Makro-Mikro\end{tabular}} & 
+% \textbf{\begin{tabular}[c]{@{}c@{}}Variasi\\Perilaku\\Pemain\end{tabular}} & 
+% \textbf{\begin{tabular}[c]{@{}c@{}}Sistem\\Reward\\Komprehensif\end{tabular}} \\
+% \hline
+% 1 & Volz et al. & 2016 & 
+% \begin{tabular}[c]{@{}l@{}}Automatic game balancing\\pada permainan kartu\end{tabular} & 
+% \xmark & \xmark & \xmark \\
+% \hline
+% 2 & Gravina et al. & 2016 & 
+% \begin{tabular}[c]{@{}l@{}}Generasi senjata beragam\\dan seimbang dalam FPS\end{tabular} & 
+% \xmark & \xmark & \xmark \\
+% \hline
+% 3 & Morosan \& Poli & 2017 & 
+% \begin{tabular}[c]{@{}l@{}}Balancing unit dalam\\RTS game\end{tabular} & 
+% \xmark & \xmark & \xmark \\
+% \hline
+% 4 & 
+% \begin{tabular}[c]{@{}l@{}}de Mesentier\\Silva et al.\end{tabular} & 2019 & 
+% \begin{tabular}[c]{@{}l@{}}Balancing meta game\\Hearthstone\end{tabular} & 
+% \xmark & \xmark & \xmark \\
+% \hline
+% 5 & 
+% \begin{tabular}[c]{@{}l@{}}Lara-Cabrera\\et al.\end{tabular} & 2014 & 
+% \begin{tabular}[c]{@{}l@{}}Evaluasi sistem reward\\menggunakan simulasi agen\end{tabular} & 
+% \xmark & \xmark & \cmark \\
+% \hline
+% 6 & 
+% \begin{tabular}[c]{@{}l@{}}Garc\'ia-S\'anchez\\et al.\end{tabular} & 2020 & 
+% \begin{tabular}[c]{@{}l@{}}Optimasi agen Hearthstone\\menggunakan algoritma\\evolusioner\end{tabular} & 
+% \xmark & \xmark & \xmark \\
+% \hline
+% 7 & Rogers et al. & 2023 & 
+% \begin{tabular}[c]{@{}l@{}}Optimasi ekonomi gim\\menggunakan representasi\\graf\end{tabular} & 
+% \cmark & \xmark & \cmark \\
+% \hline
+% 8 & Rupp \& Eckert & 2024 & 
+% \begin{tabular}[c]{@{}l@{}}Generasi dan balancing\\ekonomi gim (GEEvo)\end{tabular} & 
+% \cmark & \xmark & \cmark \\
+% \hline
+% \end{tabular}
+% }
+% \end{table}
+
+
+\section{Gim}\label{}
+Istilah gim merupakan padanan bahasa Indonesia dari kata \textit{game} yang berarti “permainan” dalam konteks digital maupun non-digital \citep{danny2021valorant}. Dalam KBBI, gim juga didefinisikan sebagai “permainan", terutama yang menggunakan komputer, konsol, atau gawai \citep{KBBI2026}. Hal ini menandakan bahwa istilah gim telah diakui secara linguistik dan sesuai dengan upaya pembakuan bahasa Indonesia terhadap terminologi teknologi dan digital modern.
+
+Dalam kajian ilmiah, gim atau game didefinisikan sebagai sistem interaktif yang melibatkan pemain untuk mencapai tujuan tertentu di bawah seperangkat aturan \citep{salen2004rules}. Gim tidak hanya berfungsi sebagai media hiburan, tetapi juga sebagai sistem kompleks yang mencerminkan dinamika ekonomi, perilaku pengguna, serta sistem penghargaan atau \textit{reward system} yang memengaruhi keterlibatan pemain \citep{hamari2017service}. 
+
+\section{Desain Gim}\label{}
+
+Desain gim merupakan proses sistematis untuk menciptakan pengalaman interaktif yang bermakna melalui kombinasi antara mekanika permainan (\textit{game mechanics}), dinamika, dan estetika. Menurut \cite{schreiber2021game}, desain gim mencakup seluruh keputusan konseptual yang membentuk bagaimana pemain berinteraksi dengan sistem permainan dan bagaimana sistem tersebut memberikan umpan balik. Proses desain ini melibatkan pemahaman mendalam tentang motivasi pemain, keseimbangan sistem ekonomi, serta penyusunan aturan yang mengarahkan perilaku dalam dunia gim.
+
+\section{Ekonomi Gim}\label{}
+
+Ekonomi gim merupakan salah satu aspek dalam desain gim yang mengatur aliran sumber daya virtual di dalam suatu ekosistem gim, seperti mata uang, pengalaman (XP), serta energi \citep{Lin2025}. Pada dasarnya, sistem ekonomi gim bertujuan untuk menyeimbangkan usaha pemain (\textit{player action}) dengan hasil yang diperoleh, sehingga tercipta suatu gim yang adil, menarik, dan berkelanjutan \citep{BowmanKeeneNajera2021}.
+
+Menurut \citet{RanandehMirzaBabaei2023}, komponen utama dalam desain ekonomi gim yaitu :
+
+\begin{enumerate}
+    \item Sumber atau \textit{source}, mekanisme yang menambahkan sumber daya ke dalam sistem pemain, seperti hadiah dari misi, \textit{loot box}, atau pembelian dengan uang nyata.
+    
+    \item Pengeluaran atau \textit{sinks}, mekanisme yang mengeluarkan atau menghapus sumber daya dari sistem pemain, seperti biaya \textit{upgrade}, biaya perbaikan, ataupun konsumsi energi.
+    
+    \item Konverter atau \textit{converter}, mekanisme yang mengubah suatu jenis sumber daya menjadi jenis lain, seperti \textit{crafting} atau \textit{trading} antar item.
+    
+    \item Penyimpanan atau \textit{inventory}, Sistem penyimpanan yang mengatur berapa banyak sumber daya yang bisa disimpan atau dimiliki pemain, di dalam dunia gim biasa dibuat dalam bentuk tas, lemari, atau peti.
+    
+    \item Pedagang atau \textit{Traders}, entitas yang memfasilitasi pertukaran sumber daya pemain dengan pemain atau pemain dengan sistem, seperti NPC shop atau pasar pemain.
+    
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\begin{tikzpicture}[
+    node distance=3cm and 4cm,
+    % Style untuk Source nodes (hijau gelap dengan teks putih)
+    source/.style={circle, draw=green!40!black, fill=green!30!black, 
+                   text=white, minimum size=1.5cm, thick, font=\small\bfseries},
+    % Style untuk Pool nodes (biru gelap dengan teks putih)
+    pool/.style={circle, draw=blue!50!black, fill=blue!40!black, 
+                 text=white, minimum size=1.6cm, thick, font=\small\bfseries},
+    % Style untuk Converter nodes (oranye gelap dengan teks putih)
+    converter/.style={circle, draw=orange!50!black, fill=orange!50!black, 
+                      text=white, minimum size=1.5cm, thick, font=\small\bfseries},
+    % Style untuk Sink nodes (merah gelap dengan teks putih)
+    sink/.style={circle, draw=red!50!black, fill=red!40!black, 
+                 text=white, minimum size=1.5cm, thick, font=\small\bfseries},
+    % Style untuk edge
+    arrow/.style={-{Stealth[length=3mm]}, thick, gray!70},
+    % Style untuk label pada edge
+    edgelabel/.style={font=\small\bfseries, fill=white, inner sep=2pt}
+]
+
+% SOURCE Nodes (kiri) - spasi vertikal diperbesar
+\node[source] (quest) at (0,2) {\begin{tabular}{c}Quest\\Complete\end{tabular}};
+\node[source] (daily) at (0,-1) {Daily Login};
+\node[source] (monster) at (0,-4) {\begin{tabular}{c}Monster\\Drop\end{tabular}};
+
+% POOL Nodes (tengah-kiri) - posisi disesuaikan
+\node[pool] (xp) at (5,3) {\begin{tabular}{c}XP\\Pool\end{tabular}};
+\node[pool] (gold) at (5,0) {\begin{tabular}{c}Gold\\Pool\end{tabular}};
+\node[pool] (item) at (5,-3.5) {\begin{tabular}{c}Item\\Pool\end{tabular}};
+
+% SINK Nodes (tengah-kanan atas) - spasi diperbesar
+\node[sink] (levelup) at (10,3.5) {\begin{tabular}{c}Level\\Up\end{tabular}};
+\node[sink] (upgrade) at (10,1.5) {\begin{tabular}{c}Upgrade\\System\end{tabular}};
+\node[sink] (shop) at (10,-0.5) {Shop};
+
+% CONVERTER Node (tengah-kanan bawah) - digeser ke bawah
+\node[converter] (crafting) at (10,-5) {Crafting};
+
+% POOL Node (kanan) - digeser
+\node[pool] (equipment) at (14,-5) {\begin{tabular}{c}Equipment\\Pool\end{tabular}};
+
+% SINK Node (kanan atas) - digeser
+\node[sink] (skill) at (14,2.5) {\begin{tabular}{c}Skill\\Unlock\end{tabular}};
+
+% Edges dengan pembobotan
+% Dari Quest Complete
+\draw[arrow] (quest) to[out=20,in=160] node[edgelabel, above] {+100} (xp);
+\draw[arrow] (quest) to[out=-10,in=160] node[edgelabel, above] {+50} (gold);
+
+% Dari Daily Login
+\draw[arrow] (daily) to[out=0,in=180] node[edgelabel, above] {+20} (gold);
+
+% Dari Monster Drop
+\draw[arrow] (monster) to[out=60,in=200] node[edgelabel, right] {+10 to +30} (gold);
+\draw[arrow] (monster) to[out=0,in=180] node[edgelabel, below] {0.3} (item);
+
+% Dari Gold Pool
+\draw[arrow] (gold) to[out=40,in=180] node[edgelabel, above] {-50} (upgrade);
+\draw[arrow] (gold) to[out=-20,in=180] node[edgelabel, above] {-100} (shop);
+
+% Dari XP Pool
+\draw[arrow] (xp) to[out=0,in=160] node[edgelabel, above] {-500} (levelup);
+
+% Dari Shop ke Item Pool
+\draw[arrow] (shop) to[out=220,in=40] node[edgelabel, right] {+1} (item);
+
+% Dari Item Pool ke Crafting
+\draw[arrow] (item) to[out=-20,in=180] node[edgelabel, above] {-3} (crafting);
+
+% Dari Crafting ke Equipment Pool
+\draw[arrow] (crafting) -- node[edgelabel, above] {+1} (equipment);
+
+% Dari Upgrade System ke Skill Unlock
+\draw[arrow] (upgrade) to[out=30,in=180] node[edgelabel, above] {-1} (skill);
+
+% Dari Level Up ke Skill Unlock
+\draw[arrow] (levelup) to[out=0,in=140] node[edgelabel, above] {Auto} (skill);
+
+\end{tikzpicture}
+}
+% Legend
+\centering
+\begin{tikzpicture}[
+    legend/.style={minimum width=0.6cm, minimum height=0.6cm, draw, thick}
+]
+    \node[legend, fill=green!30!black, draw=green!40!black] (l1) at (0,0) {};
+    \node[right=0.2cm of l1, font=\small] {Source (Sumber Reward)};
+    
+    \node[legend, fill=blue!40!black, draw=blue!50!black] (l2) at (6,0) {};
+    \node[right=0.2cm of l2, font=\small] {Pool (Penyimpanan)};
+    
+    \node[legend, fill=orange!50!black, draw=orange!50!black] (l3) at (0,-0.7) {};
+    \node[right=0.2cm of l3, font=\small] {Converter (Konversi)};
+    
+    \node[legend, fill=red!40!black, draw=red!50!black] (l4) at (6,-0.7) {};
+    \node[right=0.2cm of l4, font=\small] {Sink (Pengeluaran)};
+\end{tikzpicture}
+\caption*{\textbf{Keterangan:} Angka pada panah menunjukkan bobot aliran sumber daya. 
+Tanda + berarti penambahan, - berarti pengurangan, desimal (0.3) menunjukkan probabilitas 30\%.}
+\caption{Diagram Aliran Ekonomi Gim (diadaptasi dari \cite{Rupp_2024})}
+\label{fig:game_economy}
+\end{figure}
+
+Keseimbangan antar komponen utama inilah yang menjadi kunci utama keseimbangan sisem ekonomi gim. Jika salah satu komponen utama tidak seimbang (terlalu banyak atau terlalu sedikit), maka permainan akan menjadi terasa sulit atau justru bisa membosankan, sehingga pemain akan kehilangan motivasi untuk bermain gim. Oleh karena itu, desainer ekonomi gim perlu membuat mekanisme yang mampu merespon perubahan perilaku pemain \citep{BowmanKeeneNajera2021}.
+
+\section{Sistem \textit{Reward}}\label{}
+Sistem \textit{reward} dapat dimaknai sebagai motivasi pemain atau sebagai kompromi untuk mengurangi kekecewaan \citep{Hamari2010}. Oleh karena itu, dalam desain ekonomi gim, sistem \textit{reward} ditempatkan sebagai komponen teknis yang berfungsi sebagai sumber (\textit{source}) . Sistem ini bertanggung jawab dalam memasukkan atau menambahkan sumber daya virtual ke dalam ekosistem pemain \citep{RanandehMirzaBabaei2023}. Implementasinya dalam berbagai cara mulai dari \textit{item} material atas hasil penyelesaian misi, poin pengalaman kenaikan level, hingga mekanisme crafting yang mengubah input menjadi output \citep{Hamari2010}. 
+
+Desain sistem reward memiliki tujuan utama untuk mencapai \textit{reward balancing}. \textit{Reward balancing} didefinisikan upaya kuantitatif untuk menyamakan kekuatan atau nilai antar elemen permainan melalui optimasi numerik. Keseimbangan dicapai dengan meminimalkan standar deviasi metrik penilaian seperti kerusakan, kesehatan, atau kemajuan ekonomi \citep{9750161}. Keseimbangan ini secara langsung memengaruhi ekonomi makro dalam gim. Sistem \textit{reward} yang tidak stabil menyebabkan percepatan progres permainan yang tidak wajar dan mengganggu keberlanjutan serta stabilitas ekonomi gim secara makro.
+
+Dalam literatur desain ekonomi dan \textit{balancing} gim, sistem \textit{reward} umumnya 
+dimodelkan melalui seperangkat parameter numerik yang mengendalikan intensitas, 
+frekuensi, dan ketidakpastian aliran sumber daya ke pemain \citep{Rupp_2024}. 
+Parameter-parameter tersebut mencakup besaran \textit{reward}, 
+yaitu jumlah sumber daya yang diterima per \textit{event}, frekuensi atau interval 
+pemberian \textit{reward} yang menentukan laju akumulasi sumber daya, serta parameter probabilistik 
+seperti peluang \textit{drop} item langka atau distribusi hasil \textit{loot box} yang 
+mengatur ekspektasi matematis dan variansi \textit{reward} antar pemain \citep{Clark2023}.
+
+\section{\textit{Balancing}}\label{}
+Balancing dalam game merujuk pada proses penyesuaian mekanik, aturan, serta atribut elemen permainan agar seluruh pilihan yang tersedia bagi pemain berada dalam kondisi yang adil dan layak digunakan. \cite{RollingsAdams2003} menyatakan bahwa sebuah game dikatakan seimbang apabila keberhasilan pemain ditentukan oleh keterampilan bermain, bukan oleh keberuntungan semata atau dominasi satu strategi tertentu. Keseimbangan ini bertujuan mencegah munculnya \textit{dominant strategy} yang dapat menghilangkan variasi dan makna dalam pengambilan keputusan.
+
+\cite{Sirlin2016} menekankan bahwa balancing tidak berarti seluruh opsi harus memiliki kekuatan yang sama, melainkan setiap opsi harus memiliki kelebihan dan kelemahan yang jelas sehingga menghasilkan pilihan yang bermakna dan adil, terutama pada permainan kompetitif. Opsi yang terlalu kuat akan mendominasi, sedangkan opsi yang terlalu lemah menjadi tidak relevan dan mengurangi kedalaman permainan.
+
+Novak serta Rollings dan Adams membedakan balancing menjadi dua pendekatan, yaitu \textit{static balancing} dan \textit{dynamic balancing}. Static balancing dilakukan pada tahap perancangan dengan mengatur nilai dasar seperti kekuatan, biaya, dan rasio risiko-imbalan, sedangkan dynamic balancing terjadi selama permainan berlangsung melalui penyesuaian tingkat kesulitan atau mekanik untuk menjaga tantangan tetap seimbang bagi pemain dengan tingkat kemampuan berbeda \cite{Novak2012}.
+
+% Portnow memperkenalkan konsep \textit{perfect imbalance}, yaitu gagasan bahwa perbedaan kekuatan yang kecil antar elemen justru dapat meningkatkan dinamika strategi dan mendorong terbentuknya metagame. Selama ketimpangan tersebut tidak menciptakan elemen yang benar-benar mendominasi, variasi strategi tetap terjaga dan pengalaman bermain menjadi lebih menarik \cite{Portnow2013}. Dengan demikian, balancing dipahami bukan sekadar penyamaan kekuatan, tetapi sebagai upaya menjaga keadilan, kedalaman strategi, serta kebermaknaan setiap pilihan dalam permainan.
+
+
+\section{Graf Berarah}\label{}
+
+Dalam konteks ekonomi gim, graf berarah (\textit{directed graph}) digunakan untuk merepresentasikan aliran sumber daya antar entitas dalam sistem. Graf ini memungkinkan analisis struktural terhadap hubungan antara sumber (\textit{sources}), pengeluaran (\textit{sinks}), serta konversi sumber daya dalam ekosistem gim. Representasi matematis dari ekonomi gim dalam bentuk graf berarah membantu dalam memodelkan keterkaitan dinamis antara komponen-komponen sistem \textit{reward} dan ekonomi virtual secara kuantitatif \citep{Rogers2023}.
+
+Sebuah graf berarah $G$ didefinisikan sebagai pasangan terurut:
+\begin{equation}
+    G = (V, E),
+\end{equation}
+dengan $V = \{v_1, v_2, \dots, v_n\}$ merupakan himpunan \textit{vertex} (node) yang merepresentasikan komponen ekonomi seperti penyimpanan, toko, atau sumber daya, dan $E \subseteq V \times V$ adalah himpunan \textit{edge} berarah $(v_i, v_j)$ yang menyatakan adanya aliran sumber daya dari $v_i$ menuju $v_j$.
+
+Bobot pada setiap sisi dilambangkan sebagai $w_{ij}$ yang menggambarkan besar aliran sumber daya dari node $i$ ke node $j$. Secara matematis, hubungan antar node dapat dituliskan dalam bentuk matriks bobot:
+\begin{equation}
+    W = [w_{ij}]_{n \times n}, \quad w_{ij} \ge 0,
+\end{equation}
+Jika $w_{ij} = 0$, maka tidak ada aliran langsung dari $v_i$ ke $v_j$. Jumlah aliran keluar (\textit{outflow}) dan masuk (\textit{inflow}) dari suatu node dapat dihitung sebagai:
+\begin{align}
+    \text{Outflow}(v_i) &= \sum_{j=1}^{n} w_{ij}, \\
+    \text{Inflow}(v_i) &= \sum_{j=1}^{n} w_{ji}.
+\end{align}
+
+\citet{Rogers2023} menunjukkan bahwa representasi ekonomi gim dalam bentuk graf berarah memungkinkan penerapan algoritma evolusioner untuk mengoptimalkan kompleksitas dan kestabilan sistem ekonomi secara adaptif. Struktur graf dapat dioptimasi dengan fungsi objektif yang meminimalkan variansi ketidakseimbangan aliran:
+\begin{equation}
+    f(G) = \sum_{i=1}^{n} \left( \text{Inflow}(v_i) - \text{Outflow}(v_i) \right)^2.
+\end{equation}
+Tujuan algoritma evolusioner dalam konteks ini adalah menemukan konfigurasi graf yang meminimalkan $f(G)$, sehingga sistem \textit{reward} menjadi stabil dan seimbang.
+
+\citet{Rupp_2024} memperkenalkan kerangka \textit{GEEvo} (\textit{Game Economy Evolution}) yang menggunakan representasi graf berarah untuk menghasilkan dan menyeimbangkan ekonomi gim secara otomatis. Node dan edge direpresentasikan sebagai gen dalam kromosom evolusioner, sementara operasi mutasi dan \textit{crossover} digunakan untuk mengeksplorasi struktur graf yang lebih optimal terhadap tujuan keseimbangan ekonomi gim. \citet{Lin2025} juga menegaskan bahwa penggunaan model graf memungkinkan pengembang untuk mensimulasikan dampak perubahan nilai virtual \textit{currency} terhadap perilaku pemain, sehingga sistem ekonomi dapat dirancang secara lebih adaptif terhadap dinamika pengguna.
+
+Secara keseluruhan, pendekatan berbasis graf berarah memberikan dasar matematis dan komputasional yang kuat untuk memahami serta mengoptimasi aliran sumber daya dalam ekonomi gim. Penggabungan model ini dengan algoritma evolusioner memungkinkan terwujudnya sistem \textit{reward} yang tidak hanya seimbang, tetapi juga adaptif terhadap dinamika permainan dan perilaku pemain  \citep{Rogers2023}.
+
+
+\section{Motivasi Pemain}
+Tingkat keterlibatan, retensi, serta perilaku pemain ditentukan oleh motivasi pemain itu sendiri \citep{Bruhlmann2020}. Dalam desain ekonomi gim, memahami motivasi pemain sangat penting karena menentukan sistem \textit{reward} yang sesuai untuk mendorong perilaku yang diharapkan serta mempertahankan keseimbangan antara tantangan dan kepuasan. 
+
+Secara umum, motivasi pemain dapat dibedakan menjadi dua kelas utama :
+\begin{enumerate}
+    \item Motivasi intrinsik, dorongan yang muncul dari kepuasan diri pemain, seperti rasa pencapaian, eksplorasi, atau kreativitas \citep{HoegVanDerKaapDeeder2023}.
+    \item Motivasi ekstrinsik, dorongan yang muncul dari faktor eksternal, seperti hadiah, pengakuan sosial, atau pencapaian tertentu dalam gim \citep{HoegVanDerKaapDeeder2023}.
+\end{enumerate}
+
+dalam \textit{Self Determination Theory} dijelaskan bahwa motivasi manusia didorong oleh tiga kebutuhan psikologis dasar \citep{UysalYildirim2016} :
+
+\begin{itemize}
+    \item Autonomi, perasaan bahwa pemain memiliki kendali terhadap tindakan dan pilihannya di dalam gim
+    \item Kompetensi, perasaan mampu dan efektif dalam menghadapi tantangan
+    \item Keterhubungan, rasa memiliki hubungan sosial yang positif dengan pemain lain atau karakter di dalam gim
+\end{itemize}
+
+Selain itu, \textit{Flow Theory} yang diperkenalkan oleh Csikszentmihalyi mengatakan bahwa pemain akan berada pada keadaan \textit{flow} ketika tantangan dan kemampuan mereka berada pada tingkat yang seimbang \citep{2017Inverted}. Dalam kondisi \textit{flow}, pemain akan merasa terlibat penuh dan akan melupakan persepsi terhadap waktu yang merupakan indikator kuat dari keterlibatan optimal. Desain \textit{reward} system harus mampu mengakomodasi ketiga kebutuhan SDT sekaligus menjaga kondisi \textit{flow} agar pemain tetap terlibat \citep{BuilCatalanMartinez2019}.
+
+\section{Algoritma Evolusioner}
+
+Algoritma evolusioner merupakan salah satu pendekatan optimasi berbasis populasi yang terinspirasi dari evolusi biologis seperti seleksi alam, mutasi, dan reproduksi \citep{Herel2022}. Dalam konteks sistem ekonomi gim, algoritma evolusioner dapat digunakan untuk mencari konfigurasi optimal dari parameter sistem \textit{reward} agar tercipta keseimbangan ekonomi gim dan keterlibatan pemain tetap tercapai \citep{MotepalliJacobsen2021}. 
+
+Prinsip dasar algoritma evolusioner dimulai dengan populasi solusi kandidat yang merepresentasikan berbagai kemungkinan sistem \textit{reward}. Setiap individu dalam populasi diatur menggunakan fungsi \textit{fitness} yang menentukan seberapa baik solusi tersebut mencapai tujuan tertentu, seperti stabilitas ekonomi gim, retensi pemain, atau tingkat kepuasan \citep{Bai2024An}. 
+
+\begin{algorithm}[H]
+\caption{Kerangka Umum Algoritma Evolusioner untuk Optimasi Sistem \textit{Reward Gim}}
+\label{alg:ea-reward}
+\begin{algorithmic}[1]
+\INPUT  \parbox[t]{\dimexpr\linewidth-\labelwidth}{Populasi awal $P_0$, fungsi \textit{fitness} $f(\cdot)$, probabilitas \textit{crossover} $p_c$, probabilitas mutasi $p_m$, kondisi terminasi}
+\OUTPUT Solusi terbaik $x^*$
+\State Inisialisasi populasi awal $P_0$
+\State Evaluasi nilai \textit{fitness} setiap individu dalam $P_0$
+\While{kondisi terminasi belum terpenuhi}
+    \State Seleksi individu dari populasi berdasarkan nilai \textit{fitness}
+    \State Lakukan operasi \textit{crossover} dengan probabilitas $p_c$
+    \State Lakukan operasi mutasi dengan probabilitas $p_m$
+    \State Bentuk populasi baru $P_{t+1}$
+    \State Evaluasi nilai \textit{fitness} setiap individu dalam $P_{t+1}$
+\EndWhile
+\State Tentukan individu dengan nilai \textit{fitness} terbaik sebagai $x^*$
+\State \Return $x^*$
+\end{algorithmic}
+\end{algorithm}
+
+Proses pada Algoritma~\ref{alg:ea-reward} diawali dengan inisialisasi populasi awal \(P_0={x_1,x_2,…,x_N}\) yang merepresentasikan berbagai kemungkinan konfigurasi sistem \textit{reward}. Inisialisasi ini dapat dilakukan secara acak maupun berdasarkan parameter ekonomi gim yang telah ada sebelumnya. Setiap individu dalam populasi kemudian dievaluasi menggunakan fungsi \textit{fitness} $f(\cdot)$ yang mengukur kualitas solusi terhadap kriteria tertentu, seperti stabilitas ekonomi gim, keseimbangan antara \textit{reward} dan \textit{sink}, serta tingkat keterlibatan pemain. Perlu ditekankan bahwa fungsi \textit{fitness} dalam algoritma evolusioner tidak bersifat universal dan dapat dirancang secara berbeda-beda, bergantung pada tujuan optimasi dan karakteristik sistem yang dianalisis \citep{Baresel2002Fitness}. Sebagai contoh, pada kerangka \textit{GEEvo (Generate \& Balancing Game Economies)},
+fungsi fitness dirancang berbeda pada dua tahap optimasi. Pada tahap \textit{generator},
+fungsi fitness dirumuskan sebagai:
+\begin{equation}
+f_{\text{gen}}(G) = \sum_{v \in V} \mathrm{validate}(v),
+\end{equation}
+dengan keterangan:
+\begin{itemize}
+    \item $G$ : graf ekonomi yang dihasilkan,
+    \item $V$ : himpunan node pada graf,
+    \item $v$ : node individu pada graf,
+    \item $\mathrm{validate}(v)$ : Fungsi bantu yang menghitung jumlah batasan yang tidak terpenuhi oleh node $v$.
+\end{itemize}
+
+Setelah struktur graf dinyatakan valid, tahap \textit{balancer} menggunakan fungsi
+fitness berbasis hasil simulasi yang dirumuskan sebagai:
+\begin{equation}
+    f_1(s^{p_j}_t, x) = \alpha + \frac{1}{m} \sum_{i=1}^{m} prop(s^{p_j}_{t_i}, x),
+\end{equation}
+
+\begin{equation}
+    prop(s^{p_j}_t, x) = 
+    \begin{cases} 
+        s^{p_j}_t \cdot \frac{1}{x}, & \text{if } x > s^{p_j}_t \\
+        x \cdot \frac{1}{s^{p_j}_t}, & \text{if } x \le s^{p_j}_t ,
+    \end{cases}
+\end{equation}
+dengan keterangan:
+\begin{itemize}
+    \item $s^{p_j}_t$: Jumlah sumber daya dalam pool $p_j$ pada langkah waktu $t$.
+    \item $x$: Nilai target absolut yang ingin dicapai (misalnya: 100 gold).
+    \item $\alpha$: Parameter ambang batas (\textit{threshold}) untuk toleransi rata-rata, membantu algoritma berhenti jika nilai sudah cukup dekat (maksimum fitness adalah $1+\alpha$).
+    \item $m$: Jumlah simulasi yang dijalankan untuk memitigasi keacakan (\textit{randomness}).
+    \item $i$: Indeks untuk setiap putaran simulasi.
+    \item $prop$: Fungsi proporsional untuk menghitung seberapa dekat nilai saat ini dengan target.
+\end{itemize}
+
+
+Tahap seleksi bertujuan untuk memilih individu dengan nilai \textit{fitness} yang lebih baik agar memiliki peluang lebih besar untuk berkontribusi pada generasi berikutnya. Seleksi ini mencerminkan prinsip seleksi alam, di mana solusi yang lebih adaptif terhadap tujuan sistem akan lebih mungkin dipertahankan. Selanjutnya, operasi \textit{crossover} dilakukan dengan mengombinasikan dua individu terpilih untuk menghasilkan solusi baru yang berpotensi mewarisi karakteristik unggul dari keduanya. Untuk menjaga keberagaman populasi dan mencegah konvergensi prematur, operasi mutasi diterapkan dengan probabilitas tertentu. Mutasi dimodelkan dengan menghasilkan perubahan kecil pada parameter solusi, yaitu dengan menambahkan gangguan acak berdistribusi normal pada setiap parameter : 
+\begin{equation}
+x_i' = x_i + \varepsilon, \qquad \varepsilon \sim \mathcal{N}(0, \sigma^2).
+\end{equation}
+
+Populasi baru $P_{t+1}$ kemudian dievaluasi kembali menggunakan fungsi \textit{fitness}, dan proses ini diulang secara iteratif hingga kondisi terminasi terpenuhi, misalnya ketika jumlah generasi maksimum tercapai atau peningkatan nilai \textit{fitness} tidak lagi signifikan. Individu dengan nilai \textit{fitness} terbaik pada akhir proses evolusi dipilih sebagai solusi optimal $x^*$. Proses menyeimbangkan sistem \textit{reward} atau ekonomi gim dengan menggunakan algoritma evolusioner dapat divisualisasikan pada gambar berikut.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=2cm,
+    block/.style={rectangle, draw, thick, minimum width=2.8cm, minimum height=1cm, align=center},
+    arrow/.style={->, thick},
+    starnode/.style={draw, thick, circle, minimum size=0.6cm}
+]
+
+% Draw dashed box
+\draw[dashed, thick] (-8, -3.2) rectangle (6, 2);
+\node[anchor=north west] at (-6, 2);
+
+% Nodes
+\node[block] (fitness) at (0, 0.5) {Fitness $f(s_t, x)$};
+\node[block] (update) at (-3, -1.5) {Pembaruan\\Bobot};
+\node[block] (economy) at (3, -1.5) {Simulasi\\Ekonomi Gim};
+
+% Star nodes
+\node[starnode] (star1) at (-5, -1.5) {$*$};
+\node[starnode] (star2) at (0, -1.5) {$*$};
+
+% Labels below star1
+\node[align=center, font=\footnotesize] at (-6.7, -1.5) {Bobot Graf\\Ekonomi Gim};
+
+% Arrows
+\draw[arrow] (fitness.west) -| node[above, pos=0.25] {$f_t$} (update.north);
+\draw[arrow] (economy.north) |- node[above, pos=0.75] {$s_t$} (fitness.east);
+\draw[arrow] (star1) -- (update.west);
+\draw[arrow] (update.east) -- (star2.west);
+\draw[arrow] (star2.east) -- (economy.west);
+
+\end{tikzpicture}
+\caption{Struktur Penyeimbangan \citep{Rupp_2024}}
+\label{fig:balancer_structure}
+\end{figure}
+
+Dengan memanfaatkan algoritma evolusioner, beberapa aspek dalam ekonomi gim dapat dioptimasi seperti frekuensi distribusi \textit{reward}, rasio \textit{reward-sink}, parameter probabilistik \textit{loot table}, serta kurva progresi ekonomi pemain
+
+\section{Simulasi Agen}
+
+Simulasi berbasis agen merupakan simulasi pemodelan yang menggambarkan sistem kompleks melalui interaksi antara entitas mandiri yang disebut agen \citep{MacalNorth2005}. Setiap agen memiliki karakteristik, perilaku, serta kemampuan berinteraksi dengan agen lain maupun dengan lingkungan tempat mereka berada \citep{DatserisVahdatiDuBois2021}. Dalam konteks ekonomi gim, simulasi agen digunakan untuk memodelkan perilaku pemain dan menganalisis bagaimana perubahan dalam sistem \textit{reward} memengaruhi ekonomi gim secara makro. Dengan pendekatan ini, pengembang dapat mengetahui kebijakan dari \textit{reward balancing} tanpa perlu testing secara langsung.
+
+Model simulasi ini dapat digunakan untuk mengamati fenomena seperti \citep{NichollsAmelungStudent2017} :
+
+\begin{itemize}
+    \item Distribusi kekayaan virtual, hasil dari kombinasi reward, sink, dan interaksi antar pemain.
+    \item Efek keseimbangan reward terhadap retensi agen, yaitu berapa lama agen tetap aktif dalam sistem.
+    \item Emergent behavior, seperti inflasi ekonomi gim akibat reward berlebih atau ketimpangan antara pemain aktif dan pasif.
+\end{itemize}
+
+Dalam penelitian sistem ekonomi gim, hal ini memungkinkan analisis \textit{equilibrium} dinamis, di mana parameter sistem \textit{reward} dapat disesuaikan secara iteratif hingga tercapai stabilitas.

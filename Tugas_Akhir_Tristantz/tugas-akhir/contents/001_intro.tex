@@ -1,0 +1,75 @@
+\chapter{Pendahuluan}\label{ch:introduction}
+
+% Latar Belakang
+\section{Latar Belakang Masalah}\label{sec:background}
+
+Dalam dunia industri gim, desain gim menjadi faktor kunci dalam menentukan kesuksesan dan keberlanjutan sebuah gim. Hal ini ditunjukkan oleh survei global terhadap pengembang gim yang dilakukan oleh Statista, tercatat bahwa 58 persen responden menilai kemajuan desain game sebagai faktor penting bagi pertumbuhan industri gim di masa depan \citep{IGDA2019}. Temuan ini menegaskan bahwa keputusan desain berpean besar dalam membentuk kualitas sebuah gim. Salah satu komponen desain gim yang memiliki pengaruh langsung terhadap pengalaman pemain adalah sistem \textit{reward}, yang merupakan subset dari desain ekonomi gim. Sistem ini berperan dalam mengatur hubungan antar usaha yang dilakukan pemain dengan hasil yang diperoleh. Ketidakseimbangan pada sistem \textit{reward} dapat menyebabkan pemain kehilangan minat, progres permainan menjadi terlalu cepat atau lambat, serta menurunkan stabilitas ekonomi \textit{in-game} \citep{Holmberg2021}. Pengaturan sistem \textit{reward} secara manual akan semakin sulit dilakukan seiring dengan meningkatnya kompleksitas desain game dan perilaku pemain. Oleh karena itu, diperlukan pengoptimalan sistem \textit{reward} yang mampu beradaptasi agar tetap seimbang, adil, dan meningkatkan peluang keberlanjutan pengalaman bermain \citep{Rupp_2024}.
+
+Beberapa penelitian terdahulu telah mengkaji berbagai pendekatan untuk menyeimbangkan ekonomi gim dan sistem \textit{reward}. Pada tahap awal, sistem ekonomi gim dirancang, disesuaikan, serta diuji secara manual oleh desainer melalui pengaturan langsung \citep{schreiber2021game}. Pendekatan intuitif ini sulit untuk mempertahankan keseimbangan ekosistem gim yang kompleks dan dinamis. Seiring perkembangan penelitian, muncul pendekatan otomatis berbasis \textit{procedural content generation} (PCG) seperti yang dilakukan oleh \citet{sorochan2022generatingrealtimestrategygame} dalam studi mereka \textit{Generating Real-Time Strategy Game Units Using Search-Based Procedural Content Generation and Monte Carlo Tree Search}, yang menggabungkan pencarian berbasis Monte Carlo untuk menghasilkan dan menyeimbangkan unit gim strategi secara adaptif. Pendekatan tersebut menandai dengan dimulainya pergeseran menuju otomasi desain dengan pemanfaatan algoritma pencarian cerdas. Selanjutnya terdapat penelitian dari \citet{Rupp_2024} dalam judul \textit{GEEvo : Game Economy Generation and Balancing with Evolutionary Algorithms} yang memperluas dengan menerapkan algoritma evolusioner untuk menghasilkan serta menyeimbangkan ekonomi gim secara menyeluruh. Di sisi lain, penelitian \textit{Optimizing Hearthstone Agents using an Evolutionary Algorithm} oleh \cite{garcia2020optimizing} menunjukkan efektivitas algoritma evolusioner dalam mengoptimasi perilaku agen gim melalui proses \textit{co-evolutionary training}, yang relevan dalam konteks optimasi sistem \textit{reward} adaptif berbasis interaksi pemain. Secara keseluruhan, perkembangan penelitian ini menunjukkan pergeseran dari metode manual menuju otomatis yang mampu menyeimbangkan dan menyesuaikan ekonomi gim secara dinamis.  
+
+Meskipun berbagai penelitian telah berupaya menyeimbangkan sistem \textit{reward} dan ekonomi gim menggunakan pendekatan algoritma, sebagian besar masih memiliki keterbatasan dalam adaptivitas terhadap perubahan perilaku pemain yang dinamis. Pendekatan berbasis \textit{procedural content generation} seperti yang dikembangkan oleh Sorochan dan Guzdial (2022) berfokus pada generasi konten gim, bukan keseimbangan sistem \textit{reward} yang berinteraksi langsung dengan perilaku pemain. Di sisi lain, penelitian seperti GEEvo \citep{Rupp_2024} telah berhasil mengotomatisasi sebagian proses perancangan ekonomi gim menggunakan algoritma evolusioner, namun belum mempertimbangkan variabilitas preferensi dan strategi pemain dalam skala mikro. Pendekatan lain seperti optimasi agen gim menggunakan \textit{co-evolutionary algorithms} \citep{garcia2020optimizing} memperlihatkan kemampuan adaptif terhadap dinamika strategi, tetapi belum diintegrasikan dengan keseluruhan sistem ekonomi gim. Selain itu, penelitian terdahulu umumnya masih menggunakan model statis yang tidak memperhitungkan perubahan nilai \textit{reward} seiring evolusi ekonomi dan tingkat keterlibatan pemain \citep{Bailey2024}. Oleh karena itu, diperlukan pendekatan baru yang mampu memadukan adaptivitas perilaku pemain dengan optimasi algoritmik secara evolusioner, sehingga sistem \textit{reward} dapat menyesuaikan diri terhadap perubahan parameter ekonomi gim dan menjaga keseimbangannya secara berkelanjutan.
+
+Berdasarkan keterbatasan dari penelitian sebelumnya, maka diperlukan pendekatan yang tidak hanya berfokus pada ekonomi gim secara makro, tetapi juga mampu beradaptasi terhadap variasi perilaku pemain. Maka dari itu, penelitian ini berfokus untuk mengembangkan model optimasi sistem \textit{reward} berbasis algoritma evolusioner dengan kombinasi simulasi agen untuk mempresentasikan interaksi dan dinamika pemain di dalam gim. Tantangan dalam pendekatan ini terletak pada bagaimana model dapat menjaga sistem \textit{reward} tetap stabil meskipun interaksi multi-agen mengalami kompleksitas yang bersifat stokastik. Selain itu fungsi fitness juga diperlukan untuk menyeimbangkan \textit{fairness, engagement,} serta \textit{sustainability} dalam ekosistem gim. Dengan demikian, penelitian ini berupaya memfokuskan optimasi sistem ekonomi yang bersifat makro menjadi model adaptif berbasis perilaku pemain yang lebih representatif terhadap dinamika ekonomi gim. penelitian ini diharapkan dapat menjadi langkah awal menuju model ekonomi gim adaptif yang tidak hanya menyeimbangkan nilai numerik, tetapi juga mengintegrasikan aspek psikologis dan perilaku pemain dalam proses optimasinya.
+
+
+% Beberapa penelitian sebelumnya telah dikembangkan untuk menangkap gerakan tubuh manusia. Metode berbasis video dan kamera (misalnya motion capture optik) memerlukan konfigurasi dan mudah mengalami masalah okklusi, sehingga kurang cocok untuk penggunaan luas. merupakan pendekatan pertama yang mengombinasikan neural kinematics estimator dan physics-aware motion optimizer untuk melacak gerakan tubuh hanya dengan enam sensor IMU. Metode ini mampu merekonstruksi pose 3D, torsi sendi, serta gaya reaksi tanah secara real-time dengan akurasi, stabilitas temporal, dan konsistensi fisik. Selanjutnya, Jiang et al. (2022) mengusulkan Transformer Inertial Poser (TIP) yang memanfaatkan teknologi model transformer untuk meningkatkan konsistensi temporal prediksi gerak dan mengevaluasi drift pada posisi global maupun sendi selama rekonstruksi. TIP juga menambahkan modul pemodelan lingkungan untuk meningkatkan realisasi gerak pada berbagai keadaan. Terakhir, IMUPoser yang dikembangkan oleh Mollyn et al. (2023) menekankan penggunaan sensor IMU dalam perangkat sehari-hari seperti ponsel, jam tangan pintar, dan earbud, sehingga memungkinkan pelacakan pose tubuh tanpa memerlukan perangkat khusus tambahan yang mahal. IMUPoser mampu menerima beragam kombinasi input sensor yang tersedia dan tetap menghasilkan estimasi pose tubuh secara real-time.
+
+% Meskipun perkembangan rekonstruksi gerak manusia mengalami peningkatan, terdapat beberapa keterbatasan pada metode sebelumnya yang mendasari research gap saat ini. Metode berbasis IMU yang dilakukan oleh penelitian terdahulu mengharuskan konfigurasi sensor yang tetap sehingga kurang fleksibel terhadap perubahan konfigurasi (Van Wouwe et al., 2024). Jika terdapat perubahan konfigurasi salah satu sensor, akurasi dapat menurun drastis dan model perlu dilatih ulang. Selain itu, model regresif konvensional tidak mampu mengisi kekosongan data ketika terjadi hilangnya sinyal sensor secara real-time, akibatnya gerakan yang direkonstruksi dapat terputus atau tidak alami saat data input tidak lengkap. Beberapa pendekatan juga masih mengalami drift pada estimasi posisi jangka panjang serta kesulitan menangani keragaman jenis gerakan dan lingkungan (Jiang et al., 2022). IMUPoser, meskipun lebih fleksibel tetapi harus menghadapi tantangan data sensor yang bising dan jumlah atau posisi sensor yang dinamis dari waktu ke waktu (Mollyn et al., 2023). Keterbatasan-keterbatasan ini menegaskan perlunya sebuah sistem rekonstruksi gerak yang lebih adaptif terhadap konfigurasi sensor, mampu mengatasi kehilangan data, rendah latensi, dan tetap menjaga gerakan sesungguhnya.
+
+% Untuk mengatasi gap tersebut, penelitian ini berfokus pada penggunaan dan pengembangan model DiffusionPoser (Van Wouwe et al., 2024) sebagai inti sistem rekonstruksi gerakan untuk dunia virtual. DiffusionPoser merupakan model generatif berbasis diffusion yang mampu merekonstruksi gerakan tubuh manusia secara real-time dari kombinasi sensor tanpa memerlukan pelatihan ulang model untuk tiap konfigurasi. Model ini memberikan kelebihan berupa fleksibilitas dalam menentukan jumlah dan penempatan sensor yang dipakai sekaligus memastikan keluaran gerak yang dihasilkan tetap realistis meskipun terdapat kebebasan gerak yang tidak teramati langsung oleh sensor. Sifat generatif difusi dalam DiffusionPoser berperan sebagai acuan yang dapat mengisi gerakan yang hilang atau tidak tertangkap sensor, sehingga avatar virtual dapat bergerak lancar dan sesuai dengan kenyataan aslinya. Beberapa tantangan teknis perlu diperhatikan agar model terintegrasi ke dalam ekosistem dunia virtual, antara lain menjaga latensi tetap rendah, kalibrasi dan sinkronisasi berbagai jenis sensor wearable yang mungkin digunakan, serta memastikan kesesuaian gerakan hasil rekonstruksi dengan gerakan asli pengguna tanpa distorsi yang mengganggu pengalaman imersif.
+
+% Penelitian tugas akhir ini mengusulkan pengembangan dan integrasi model generatif difusi berbasis DiffusionPoser ke dalam ekosistem dunia virtual interaktif. Solusi yang diusulkan diharapkan mampu menghadirkan sistem pelacakan gerakan tubuh yang lebih fleksibel, adaptif, dan realistis, sehingga memberikan pengalaman imersif. Dengan kata lain, karya ini bertujuan menjembatani research gap yang ada dengan menghadirkan platform rekonstruksi gerak real-time untuk dunia virtual yang mengombinasikan fleksibilitas konfigurasi sensor dan realisme gerakan hasil model difusi generatif terkini.
+
+
+
+% Rumusan Masalah
+\section{Rumusan Masalah}
+\label{sec:problem}
+
+Rumusan masalah dalam penelitian Tugas Akhir ini dinyatakan sebagai berikut:
+
+\begin{enumerate}
+
+     \item Bagaimana merancang model sistem \textit{reward} dalam ekonomi gim sehingga mampu merepresentasikan aliran sumber daya?
+
+     \item Bagaimana mengembangkan simulasi berbasis agen untuk merepresentasikan perilaku pemain terhadap sistem \textit{reward} dalam ekonomi gim?
+
+    \item Bagaimana mengembangkan integrasi algoritma evolusioner untuk mengoptimasi parameter sistem \textit{reward} berdasarkan hasil simulasi agen?
+    
+    
+\end{enumerate}
+
+% Batasan Masalah
+\section{Batasan Masalah}
+\label{sec:limitation}
+
+Penelitian ini dibatasi pada sistem \textit{reward} dalam ekonomi gim berbasis progresi sumber daya, seperti gim \textit{role-playing game} (RPG) atau \textit{simulation game}, di mana pemain memperoleh reward berupa mata uang virtual, pengalaman (XP), atau item melalui aktivitas tertentu, serta tidak berfokus pada implementasi pada gim komersial tertentu, melainkan menggunakan model ekonomi gim abstrak sebagai studi kasus.
+
+% Tujuan Masalah
+\section{Tujuan Penelitian}
+\label{sec:purpose}
+
+Adapun tujuan dari penelitian Tugas Akhir ini sebagai berikut : 
+%     Tujuan Penelitian Tugas Akhir
+     \begin{enumerate}
+
+         \item Merancang model sistem \textit{reward} dalam ekonomi gim yang mampu merepresentasikan aliran sumber daya
+
+         \item Mengembangkan simulasi berbasis agen untuk merepresentasikan perilaku pemain terhadap sistem \textit{reward} dalam ekonomi gim
+
+         \item Mengembangkan integrasi algoritma evolusioner untuk mengoptimasi parameter sistem \textit{reward} berdasarkan hasil simulasi agen
+        
+     \end{enumerate}
+
+% Manfaat Penelitian
+\section{Manfaat}
+\label{sec:benefit}
+
+Manfaat dari penelitian Tugas Akhir ini dijabarkan sebagai berikut:
+
+\begin{enumerate}
+    \item Menyediakan kerangka eksperimental yang dapat mendukung pengembangan sistem otomatis dalam penyeimbangan ekonomi gim, sehingga mengurangi ketergantungan pada pengujian manual oleh desainer gim.
+    \item Memberikan pendekatan komputasional berbasis algoritma evolusioner untuk mengoptimasi sistem \textit{reward} dalam ekonomi gim, yang dapat menjadi referensi bagi penelitian lanjutan
+\end{enumerate}
+
+    

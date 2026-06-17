@@ -1,0 +1,5 @@
+Sumber,α=0.05 Balanced %,α=0.01 Balanced %,α=0.05 Median Gen,α=0.05 Exec Time (s),α=0.05 Fitness Std Dev
+Paper GEEvo (n=194),93.3%,83.0%,1.0,18.4,N/A
+TA — Abstract (n=30),66.67%,30.0%,2.5,1.191,0.1947
+TA — MMORPG (n=10),50.0%,0.0%,251.0,3.609,0.2858
+TA — VHS/Horror (n=10),30.0%,20.0%,500.0,18.004,0.0507

@@ -1,0 +1,60 @@
+\documentclass[12pt]{TA-ITS}
+% \documentclass[12pt,twoside]{TA-ITS} % atau book
+
+% SEBELUM ACC (SEBELUM CETAK)
+% \pagestyle{draf}
+
+% SETELAH ACC (MAU CETAK)
+\pagestyle{TA}
+
+% Singkatan Tugas Akhir
+\newcommand{\ta}{penelitian Tugas Akhir}
+\newcommand{\Ta}{Penelitian Tugas Akhir}
+
+% Metode & model
+\newcommand{\method}{Algoritma Evolusioner dengan Simulasi Agen}
+\newcommand{\smethod}{GEEvo-Agent}
+
+% % Singkatan Tugas Akhir
+% \newcommand{\ta}{}
+% \newcommand{\Ta}{}
+% \newcommand{\TA}{}
+
+% % Metode & model
+% \newcommand{\method}{}
+% \newcommand{\smethod}{}
+
+\begin{document}
+    \input{tugas-akhir/contents/000_metadata}
+    \input{tugas-akhir/front-matter/000_front-matter}
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \input{tugas-akhir/contents/XXX_abstrak}
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \input{tugas-akhir/contents/XXX_abstract}
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \input{tugas-akhir/contents/XXX_preface}
+    \newpage
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \listoffigures
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \listoftables
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \listofalgorithms
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \input{tugas-akhir/contents/100_symbols}
+    % \input{tugas-akhir/contents/halaman_kosong}
+    \newpage
+    \tableofcontents
+    \newpage
+    \setstretch{1.2}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    \input{tugas-akhir/contents/001_intro}
+    \input{tugas-akhir/contents/002_literature}
+    \input{tugas-akhir/contents/003_method}
+    \input{tugas-akhir/contents/004_result}
+    \input{tugas-akhir/contents/005_summary}
+    \input{tugas-akhir/contents/006_appendix} % Bisa dikasih `comment` kalau tidak dipakai
+    \input{tugas-akhir/contents/007_bibliography}
+    \input{tugas-akhir/back-matter/999_back-matter}
+\end{document}

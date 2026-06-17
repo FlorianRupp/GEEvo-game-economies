@@ -1,0 +1,29 @@
+\chapter*{Abstrak}
+
+\makeatletter
+    \vspace{1cm}
+    \begin{center}
+        \noindent\textbf{\@judul}
+    \end{center}
+
+    \vspace{1cm}
+    \begin{table}[htbp]
+        \begin{tabular}{lcp{0.49\paperwidth}}
+            Nama Mahasiswa / NRP & : & \@nama~/ \@NRP\\
+            Departemen & : & \@departemen~{\singkatan@fakultas}-ITS\\
+            Dosen Pembimbing & : & \pbb@satu
+        \end{tabular}
+    \end{table}
+
+    \vspace{1cm}
+    \noindent
+    \textbf{Abstrak}
+
+    % ============================
+    % Teks abstrak mulai dari sini
+    % ============================
+    Permasalahan \textit{reward balancing} dalam desain ekonomi gim merupakan faktor kritis yang memengaruhi keterlibatan dan keberlanjutan pengalaman bermain. Sistem \textit{reward} yang tidak seimbang menyebabkan menurunnya ketertarikan pemain, progres permainan yang tidak wajar, serta instabilitas ekonomi in-gim. Penelitian terdahulu seperti GEEvo \citep{Rupp_2024} telah berhasil mengotomatisasi penyeimbangan ekonomi gim menggunakan algoritma evolusioner, namun belum mempertimbangkan variabilitas perilaku pemain yang bersifat dinamis. Penelitian ini mengembangkan dua kontribusi utama terhadap kerangka GEEvo: (1) simulasi berbasis agen dengan tiga profil perilaku (\textit{aggressive}, \textit{passive}, \textit{random}) untuk merepresentasikan dinamika pemain, dan (2) fungsi fitness obj4 (\textit{tolerance-threshold}) sebagai alternatif yang memberikan gradien sinyal lebih informatif bagi algoritma evolusioner. Evaluasi komparatif pada 194 graf menunjukkan bahwa kombinasi keduanya (Kondisi C) menghasilkan peningkatan \textit{Improved \%} sebesar 87.11\% dan konvergensi pada median 8 generasi, dibandingkan 500 generasi pada kondisi tanpa kontribusi tambahan. Selain itu, dikembangkan pula modul ekstraksi otomatis konfigurasi ekonomi dari \textit{Game Design Document} (GDD) nyata menggunakan pencocokan kata kunci, yang divalidasi pada GDD MMORPG dan VHS \textit{Horror} masing-masing sebanyak 10 graf.
+
+    % Untuk kata kunci
+    \katakunci{Algoritma Evolusioner, Simulasi Agen, Reward Balancing, Game Economy, Game Design Document}
+\makeatother

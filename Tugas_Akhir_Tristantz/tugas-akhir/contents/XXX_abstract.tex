@@ -1,0 +1,30 @@
+\chapter*{Abstract}
+
+\makeatletter
+    \vspace{1cm}
+    \begin{center}
+        \noindent\textbf{\@title@}
+    \end{center}
+
+    \vspace{1cm}
+    \begin{table}[htbp]
+        \begin{tabular}{lcp{0.49\paperwidth}}
+            Student Name / ID & : & \@nama~/ \@NRP\\
+            Department & : & \@department~{\faculty@abbreviation}-ITS\\
+            Advisor & : & \pbb@satu
+        \end{tabular}
+    \end{table}
+
+    \vspace{1cm}
+    \noindent
+    \textbf{Abstract}
+    
+    % ====================
+    % Abstract starts here
+    % ====================
+Reward balancing in game economy design is a critical factor affecting player engagement and the sustainability of the gameplay experience. An unbalanced reward system causes declining player interest, unnatural progression, and in-game economic instability. Prior work such as GEEvo \citep{Rupp_2024} has automated game economy balancing using evolutionary algorithms, but has not addressed the variability of player behavior. This research introduces two main contributions to the GEEvo framework: (1) agent-based simulation with three behavioral profiles (aggressive, passive, random) to represent player dynamics, and (2) an obj4 tolerance-threshold fitness function that provides a more informative gradient signal for the evolutionary algorithm. Comparative evaluation on 194 graphs shows that the combined approach (Condition C) achieves an Improved \% of 87.11\% and converges at a median of 8 generations, compared to 500 generations under the baseline. Additionally, an automatic extraction module is developed to derive economy configurations from real Game Design Documents (GDDs) via keyword matching, validated on MMORPG and VHS Horror GDDs with 10 graphs each.
+
+
+    % For keywords
+     \keywords{Evolutionary Algorithm, Agent-based Simulation, Reward Balancing, Game Economy, Game Design Document}
+\makeatother

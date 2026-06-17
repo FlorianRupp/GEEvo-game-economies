@@ -1,0 +1,123 @@
+\addcontentsline{toc}{chapter}{Lembar Pengesahan}
+\makeatletter
+\begin{center}
+    \tikz[remember picture,overlay] 
+    \node[opacity=1,inner sep=0pt] at (current page.center)
+        {\includegraphics[width=\paperwidth,height=\paperheight]{tugas-akhir/assets/images/WM Lembar Pengesahan.jpg}};
+
+    {\noindent\centering\textbf{\large\MakeUppercase{Lembar Pengesahan}}\par}
+
+    \vspace{1cm}
+    \textbf{\MakeUppercase{\@judul}}
+
+    \vspace{0.75cm}
+    \textbf{\MakeUppercase{Tugas Akhir}}
+
+    \vspace{0.25cm}
+    Diajukan untuk memenuhi salah satu syarat
+
+    memperoleh gelar Sarjana Matematika pada
+
+    Program Studi S-1 \@departemen
+
+    Departemen~\@departemen
+
+    Fakultas~\@fakultas
+
+    Institut Teknologi Sepuluh Nopember
+
+    \vspace{0.5cm}
+    Oleh: \textbf{\@nama}
+
+    NRP. \@NRP
+
+    \vspace{0.5cm}
+    Surabaya, ~\@bulan ~\@tahun
+
+    Disetujui oleh Tim Penguji Tugas Akhir:
+
+    \vspace{0.5cm}
+    Pembimbing:
+
+    \begin{enumerate}
+        \ifthenelse{\equal{\pbb@tiga}{}\OR\equal{\pbb@tiga}{ }}
+            {
+                \ifthenelse{\equal{\pbb@dua}{}\OR\equal{\pbb@dua}{ }}
+                    {
+                        \item \pbb@satu ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@pbb@satu
+                    }
+                    {
+                        \item \pbb@satu ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@pbb@satu
+                        \item \pbb@dua ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@pbb@dua
+                    }
+            }
+            {
+                \item \pbb@satu ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@pbb@satu
+                \item \pbb@dua ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@pbb@dua
+                \item \pbb@tiga ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@pbb@tiga
+            }
+    \end{enumerate}
+
+    \vspace{0.5cm}
+    Penguji:
+    \begin{enumerate}
+        \ifthenelse{\equal{\uji@tiga}{}\OR\equal{\uji@tiga}{ }}
+            {
+                \ifthenelse{\equal{\uji@dua}{}\OR\equal{\uji@dua}{ }}
+                    {
+                        \item \uji@satu ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@uji@satu
+                    }
+                    {
+                        \item \uji@satu ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@uji@satu
+                        \item \uji@dua ~ \hfill (\fillin[3cm])
+
+                        NIP. ~\NIP@uji@dua
+                    }
+            }
+            {
+                \item \uji@satu ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@uji@satu
+                \item \uji@dua ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@uji@dua
+                \item \uji@tiga ~ \hfill (\fillin[3cm])
+
+                NIP. ~\NIP@uji@tiga
+            }
+    \end{enumerate}
+
+    \begin{flushright}
+        \begin{minipage}{.4\textwidth}
+            \begin{center}
+                Mengetahui,
+
+                Kepala Departemen \@departemen,
+
+                Fakultas \@fakultas,
+
+                \vspace{2cm}
+                \underline{\@kadep}
+
+                NIP. \NIP@kadep
+            \end{center}
+        \end{minipage}
+    \end{flushright}
+\end{center}
+\makeatother

@@ -4,3 +4,17 @@ __pycache__/
 
 .idea/
 *.pyc
+
+# Output file runtime (bisa di-regenerasi)
+profile.txt
+Gdd/economy_output.txt
+Gdd/pdf_results.txt
+
+# Serialized graph
+*.pkl
+
+# Jupyter output HTML
+*.html
+
+# OS
+.DS_Store

@@ -1,0 +1,26 @@
+\chapter{Kesimpulan dan Saran}
+    \section{Kesimpulan}
+
+        Berdasarkan hasil implementasi dan pengujian yang telah dilakukan, penelitian ini menarik beberapa kesimpulan sebagai jawaban atas rumusan masalah yang diajukan:
+
+        \begin{enumerate}
+            \item Model sistem \textit{reward} berbasis graf berarah $G = (V, E, W)$ berhasil diimplementasikan untuk merepresentasikan aliran sumber daya dalam ekonomi gim. Lima tipe node — \textit{Source}, \textit{Pool}, \textit{Converter}, \textit{RandomGate}, dan \textit{Drain} — bersama-sama membentuk ekosistem aliran sumber daya yang dapat dimodelkan, disimulasikan, dan dioptimasi secara komputasional. Validasi melalui simulasi deret waktu menunjukkan bahwa model mampu merepresentasikan kondisi tidak seimbang (akumulasi atau penipisan sumber daya) maupun kondisi seimbang (aliran stasioner dinamis) sesuai dengan konfigurasi bobot \textit{edge} yang ditetapkan.
+
+            \item Simulasi berbasis agen dengan tiga profil perilaku (\textit{aggressive}, \textit{passive}, \textit{random}) berhasil dikembangkan untuk merepresentasikan variabilitas perilaku pemain. Evaluasi komparatif pada $n = 194$ graf abstrak menunjukkan bahwa penambahan simulasi agen (Kondisi B vs Kondisi A) secara konsisten meningkatkan kualitas pencarian algoritma evolusioner: \textit{Improved \%} naik sebesar $+3.09\%$ dan \textit{Fitness Std Dev} turun sebesar 0.049, mengindikasikan bahwa agen membantu algoritma menemukan solusi yang lebih baik dengan variansi yang lebih rendah. Analisis per profil agen menunjukkan bahwa agen \textit{aggressive} memberikan performa terbaik (\textit{Balanced \%} = 63.33\%, Median Generasi = 3.0) karena interaksinya yang aktif menghasilkan sinyal fitness yang lebih informatif bagi algoritma.
+
+            \item Integrasi antara simulasi berbasis agen dan fungsi fitness obj4 (\textit{tolerance-threshold}) berhasil dikembangkan sebagai kontribusi utama penelitian ini. Kondisi C (agen + obj4) menunjukkan keunggulan signifikan pada $\alpha = 0.05$: \textit{Balanced \%} mencapai 54.64\% (lebih tinggi $+8.25\%$ dari Kondisi B), \textit{Improved \%} mencapai 87.11\%, dan \textit{Median Generation} hanya 8 generasi dibandingkan 500 generasi pada Kondisi A dan B. Konvergensi yang jauh lebih cepat pada Kondisi C mengkonfirmasi bahwa obj4 memberikan gradien sinyal yang lebih efektif bagi algoritma evolusioner. Validasi pada dataset GDD nyata (MMORPG dan VHS) menunjukkan bahwa pendekatan ini dapat diterapkan pada ekonomi gim nyata yang diekstrak secara otomatis dari \textit{Game Design Document}: seluruh graf VHS ($n=10$) mengalami perbaikan (Improved \% = 100\%) meskipun ambang keseimbangan ketat lebih sulit dicapai pada topologi yang lebih kompleks.
+        \end{enumerate}
+
+    \section{Saran}
+
+        Berdasarkan pengalaman dalam penelitian ini, beberapa saran diajukan untuk pengembangan lebih lanjut:
+
+        \begin{enumerate}
+            \item Penelitian lanjutan dapat mempertimbangkan penggunaan dataset yang lebih besar ($n \geq 100$) untuk dataset GDD agar estimasi statistik lebih representatif dan stabil. Hal ini memerlukan ketersediaan GDD yang lebih banyak atau augmentasi GDD yang ada melalui variasi konfigurasi topologi.
+
+            \item Fungsi fitness obj4 terbukti efektif pada $\alpha = 0.05$ namun konvergen identik dengan obj3 pada $\alpha$ yang lebih ketat ($\alpha \leq 0.01$). Penelitian lanjutan dapat mengeksplorasi formula fitness adaptif yang menyesuaikan mekanisme \textit{tolerance-threshold} secara dinamis berdasarkan kemajuan konvergensi, sehingga manfaat obj4 dapat dipertahankan pada kondisi $\alpha$ yang lebih ketat.
+
+            \item Modul \texttt{GDDExtractor} saat ini menggunakan pendekatan pencocokan kata kunci statis. Penggunaan model bahasa besar (\textit{large language model}) untuk pemahaman semantik dokumen GDD secara kontekstual dapat meningkatkan akurasi pemetaan node, terutama untuk GDD yang menggunakan terminologi tidak konvensional atau dalam bahasa selain Inggris.
+
+            \item Penelitian ini dapat diperluas untuk mengoptimasi topologi graf secara bersamaan dengan parameter bobot (\textit{co-optimization}) menggunakan algoritma evolusioner multi-objektif, sehingga tidak hanya bobot \textit{edge} tetapi juga struktur koneksi antar node dapat diadaptasi terhadap profil perilaku pemain.
+        \end{enumerate}

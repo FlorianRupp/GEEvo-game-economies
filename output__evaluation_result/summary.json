@@ -1,0 +1,331 @@
+{
+  "alphas": [
+    0.05,
+    0.01,
+    0.0
+  ],
+  "base_conf": {
+    "Source": 3,
+    "RandomGate": 2,
+    "Pool": 4,
+    "Converter": 1
+  },
+  "mmorpg_conf": {
+    "Source": 2,
+    "RandomGate": 3,
+    "Pool": 5,
+    "Converter": 3
+  },
+  "vhs_conf": {
+    "Source": 1,
+    "RandomGate": 2,
+    "Pool": 3,
+    "Converter": 1
+  },
+  "comparison_data": {
+    "Sumber": [
+      "Paper GEEvo (n=194)",
+      "TA — Abstract (n=30)",
+      "TA — MMORPG (n=10)",
+      "TA — VHS/Horror (n=10)"
+    ],
+    "α=0.05 Balanced %": [
+      "93.3%",
+      "66.67%",
+      "50.0%",
+      "30.0%"
+    ],
+    "α=0.01 Balanced %": [
+      "83.0%",
+      "30.0%",
+      "0.0%",
+      "20.0%"
+    ],
+    "α=0.05 Median Gen": [
+      1,
+      2.5,
+      251.0,
+      500.0
+    ],
+    "α=0.05 Exec Time (s)": [
+      18.4,
+      1.191,
+      3.609,
+      18.004
+    ],
+    "α=0.05 Fitness Std Dev": [
+      "N/A",
+      0.1947,
+      0.2858,
+      0.0507
+    ]
+  },
+  "centrality": {
+    "Townhall Level": 0.06451612903225806,
+    "TH Gold & Elixir Capacity": 0.0967741935483871,
+    "Capacity list (TH)": 0.03225806451612903,
+    "Player total gold capacity": 0.12903225806451613,
+    "Inventory control (fx)": 0.06451612903225806,
+    "Gate (gold inv input)": 0.06451612903225806,
+    "Gold inventory": 0.1935483870967742,
+    "Drain (gold inventory)": 0.03225806451612903,
+    "Gate (Gold Storage upgrade)": 0.0967741935483871,
+    "Converter (Gold Storage upgrade)": 0.0967741935483871,
+    "Gold Storage level": 0.06451612903225806,
+    "Storage Capacity": 0.0967741935483871,
+    "Capacity list (GS)": 0.03225806451612903,
+    "Build duration (GS)": 0.06451612903225806,
+    "Build duration list (GS)": 0.03225806451612903,
+    "Upgrade cost (GS)": 0.06451612903225806,
+    "Cost list (GS)": 0.03225806451612903,
+    "Gate (Gold Mine upgrade)": 0.0967741935483871,
+    "Converter (Gold Mine upgrade)": 0.0967741935483871,
+    "Gold mine level": 0.0967741935483871,
+    "Capacity (GM)": 0.0967741935483871,
+    "Production": 0.0967741935483871,
+    "Production list (per min)": 0.03225806451612903,
+    "Capacity list (GM)": 0.03225806451612903,
+    "Build duration (GM)": 0.06451612903225806,
+    "Build duration list (GM)": 0.03225806451612903,
+    "Upgrade cost (GM)": 0.06451612903225806,
+    "Cost list (GM)": 0.03225806451612903,
+    "Gold Mine (source)": 0.06451612903225806,
+    "Gold mine storage": 0.0967741935483871,
+    "Collect Gold (gate)": 0.06451612903225806,
+    "Elixir inventory": 0.03225806451612903
+  },
+  "deg_cent": {
+    "Townhall Level": 0.10526315789473684,
+    "TH Gold & Elixir Capacity": 0.10526315789473684,
+    "Player total gold capacity": 0.15789473684210525,
+    "Inventory control (fx)": 0.05263157894736842,
+    "Gate (gold inv input)": 0.10526315789473684,
+    "Gold inventory": 0.2631578947368421,
+    "Drain (gold inventory)": 0.05263157894736842,
+    "Gate (Gold Storage upgrade)": 0.10526315789473684,
+    "Converter (Gold Storage upgrade)": 0.10526315789473684,
+    "Gold Storage level": 0.10526315789473684,
+    "Storage Capacity": 0.10526315789473684,
+    "Gate (Gold Mine upgrade)": 0.05263157894736842,
+    "Converter (Gold Mine upgrade)": 0.10526315789473684,
+    "Gold mine level": 0.15789473684210525,
+    "Capacity (GM)": 0.10526315789473684,
+    "Production": 0.10526315789473684,
+    "Gold Mine (source)": 0.10526315789473684,
+    "Gold mine storage": 0.15789473684210525,
+    "Collect Gold (gate)": 0.10526315789473684,
+    "Elixir inventory": 0.05263157894736842
+  },
+  "sorted_centrality": [
+    [
+      "Gold inventory",
+      0.1935483870967742
+    ],
+    [
+      "Player total gold capacity",
+      0.12903225806451613
+    ],
+    [
+      "TH Gold & Elixir Capacity",
+      0.0967741935483871
+    ],
+    [
+      "Gate (Gold Storage upgrade)",
+      0.0967741935483871
+    ],
+    [
+      "Converter (Gold Storage upgrade)",
+      0.0967741935483871
+    ],
+    [
+      "Storage Capacity",
+      0.0967741935483871
+    ],
+    [
+      "Gate (Gold Mine upgrade)",
+      0.0967741935483871
+    ],
+    [
+      "Converter (Gold Mine upgrade)",
+      0.0967741935483871
+    ],
+    [
+      "Gold mine level",
+      0.0967741935483871
+    ],
+    [
+      "Capacity (GM)",
+      0.0967741935483871
+    ],
+    [
+      "Production",
+      0.0967741935483871
+    ],
+    [
+      "Gold mine storage",
+      0.0967741935483871
+    ],
+    [
+      "Townhall Level",
+      0.06451612903225806
+    ],
+    [
+      "Inventory control (fx)",
+      0.06451612903225806
+    ],
+    [
+      "Gate (gold inv input)",
+      0.06451612903225806
+    ],
+    [
+      "Gold Storage level",
+      0.06451612903225806
+    ],
+    [
+      "Build duration (GS)",
+      0.06451612903225806
+    ],
+    [
+      "Upgrade cost (GS)",
+      0.06451612903225806
+    ],
+    [
+      "Build duration (GM)",
+      0.06451612903225806
+    ],
+    [
+      "Upgrade cost (GM)",
+      0.06451612903225806
+    ],
+    [
+      "Gold Mine (source)",
+      0.06451612903225806
+    ],
+    [
+      "Collect Gold (gate)",
+      0.06451612903225806
+    ],
+    [
+      "Capacity list (TH)",
+      0.03225806451612903
+    ],
+    [
+      "Drain (gold inventory)",
+      0.03225806451612903
+    ],
+    [
+      "Capacity list (GS)",
+      0.03225806451612903
+    ],
+    [
+      "Build duration list (GS)",
+      0.03225806451612903
+    ],
+    [
+      "Cost list (GS)",
+      0.03225806451612903
+    ],
+    [
+      "Production list (per min)",
+      0.03225806451612903
+    ],
+    [
+      "Capacity list (GM)",
+      0.03225806451612903
+    ],
+    [
+      "Build duration list (GM)",
+      0.03225806451612903
+    ],
+    [
+      "Cost list (GM)",
+      0.03225806451612903
+    ],
+    [
+      "Elixir inventory",
+      0.03225806451612903
+    ]
+  ],
+  "sorted_deg": [
+    [
+      "Gold inventory",
+      0.2631578947368421
+    ],
+    [
+      "Player total gold capacity",
+      0.15789473684210525
+    ],
+    [
+      "Gold mine level",
+      0.15789473684210525
+    ],
+    [
+      "Gold mine storage",
+      0.15789473684210525
+    ],
+    [
+      "Townhall Level",
+      0.10526315789473684
+    ],
+    [
+      "TH Gold & Elixir Capacity",
+      0.10526315789473684
+    ],
+    [
+      "Gate (gold inv input)",
+      0.10526315789473684
+    ],
+    [
+      "Gate (Gold Storage upgrade)",
+      0.10526315789473684
+    ],
+    [
+      "Converter (Gold Storage upgrade)",
+      0.10526315789473684
+    ],
+    [
+      "Gold Storage level",
+      0.10526315789473684
+    ],
+    [
+      "Storage Capacity",
+      0.10526315789473684
+    ],
+    [
+      "Converter (Gold Mine upgrade)",
+      0.10526315789473684
+    ],
+    [
+      "Capacity (GM)",
+      0.10526315789473684
+    ],
+    [
+      "Production",
+      0.10526315789473684
+    ],
+    [
+      "Gold Mine (source)",
+      0.10526315789473684
+    ],
+    [
+      "Collect Gold (gate)",
+      0.10526315789473684
+    ],
+    [
+      "Inventory control (fx)",
+      0.05263157894736842
+    ],
+    [
+      "Drain (gold inventory)",
+      0.05263157894736842
+    ],
+    [
+      "Gate (Gold Mine upgrade)",
+      0.05263157894736842
+    ],
+    [
+      "Elixir inventory",
+      0.05263157894736842
+    ]
+  ]
+}

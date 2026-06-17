@@ -1,0 +1,78 @@
+% Kita gunakan tikzpicture agar lebih mudah mengaturnya (sekaligus bisa menerapkan hitungan matematis)
+\makeatletter % Anggap `@` sebagai suatu simbol dalam perintah
+\thispagestyle{empty}
+{
+\begin{tikzpicture}[remember picture, overlay]
+
+    %%%%%%%%%%%%%%%
+    % Daerah Konten
+    %%%%%%%%%%%%%%%
+    \fill[itsblue] (current page.south west) rectangle (current page.north east);
+    \node[anchor=north west, text width=\paperwidth-1.8in, color=white, font=, align=justify] at ([xshift = \titleimagepadding/0.7, yshift=\topseparator-\textpadding] current page.north west) 
+        {
+            
+            \setstretch{1.5} % Atur spasi antar baris
+            \noindent \hspace{-2.5mm} % Dipastikan tidak ada indentasi; edit spasi
+            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{Tugas Akhir --- \kode@TA}}}}
+
+            \vspace{0.07\paperheight}
+            \textsf{\fontsize{\titlefontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{\@judul}}}}
+
+            \vspace{0.1\paperheight}
+            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{\@nama}}}}
+
+            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{NRP. \@NRP}}
+
+            \vspace{0.07\paperheight}
+            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{Dosen Pembimbing}}
+            
+            \ifthenelse{\equal{\pbb@tiga}{}\OR\equal{\pbb@tiga}{ }} % Cek apakah ada pembimbing ketiga atau tidak
+                {% Kalau tidak ada, cek ada pembimbing kedua atau tidak
+                    \ifthenelse{\equal{\pbb@dua}{}\OR\equal{\pbb@dua}{ }}
+                        {% Kalau tidak ada juga, cukup tulis pembimbing pertama
+                            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}\\
+                        }
+                        {% Kalau ada, tulis kedua pembimbing saja
+                            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}
+                            
+                            \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@dua}\\ NIP. \NIP@pbb@dua}}
+                        }
+                }
+                {% Kalau ada, tulis ketiga pembimbingnya
+                    \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}
+                    
+                    \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@dua}\\ NIP. \NIP@pbb@dua}}
+                    
+                    \textsf{\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@tiga}\\ NIP. \NIP@pbb@tiga}}\\
+                }
+
+            \vspace{0.05\paperheight}
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{\textbf{Program Sarjana}}}
+            
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Departemen~\@departemen}}
+            
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Fakultas~\@fakultas}}
+            
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Institut Teknologi Sepuluh Nopember}}
+            
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Surabaya}}
+            
+            \textsf{\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{\@tahun}}
+
+            % Kita sisakan spasi kosong, karena alasan yang jelas untuk spasi di cover
+        };
+    
+    %%%%%%%%%%%%%%%
+    % Daerah Gambar
+    %%%%%%%%%%%%%%%
+    \fill[white] (current page.north west) rectangle ++(\paperwidth, \topseparator);
+
+    % Logo ITS
+    \node[anchor=north west] at ([xshift=\titleimagepadding, yshift=\topseparator/2+\ITSsize/2] current page.north west) {\includegraphics[height = \ITSsize]{tugas-akhir/assets/images/its blue.png}};
+
+    % Logo Perusahaan
+    % \node[anchor=north east] at ([xshift=\companyimagepadding, yshift=\topseparator/2+\companysize/2] current page.north east) {\includegraphics[height = \companysize]{LuDoYa-Internship/assets/images/report-need-stuffs/Logo SKPB-biru.png}};
+
+\end{tikzpicture}}
+\newpage
+\makeatother % Kembalikan `@` sebagai simbol khusus

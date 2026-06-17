@@ -1,0 +1,222 @@
+\chapter{Metode Penelitian}\label{ch:method}
+\section{Tahapan Penelitian}\label{sec:stages}
+Bab ini membahas tahapan penelitian dalam pelaksanaan Tugas Akhir. Penelitian ini berfokus pada perancangan model dan optimasi sistem \textit{reward} dalam ekonomi gim menggunakan simulasi berbasis agen dan algoritma evolusioner. Pendekatan yang digunakan bertujuan untuk merepresentasikan aliran sumber daya dalam sistem \textit{reward} serta menganalisis pengaruhnya terhadap dinamika ekonomi gim. Alur tahapan penelitian ini ditunjukkan pada Gambar 3.1.
+
+\setlength{\fboxsep}{10pt} 
+\begin{figure}[H]
+\centering
+\fbox{
+\begin{tikzpicture}[
+    node distance=0.9cm,
+    every node/.style={
+        draw,
+        rectangle,
+        rounded corners,
+        align=center,
+        minimum width=5cm,
+        minimum height=1cm,
+        font=\small
+    },
+    arrow/.style={
+        ->,
+        thick
+    }
+]
+
+\node (literature) {Studi Literatur};
+\node (analysis) [below=of literature] {Analisis dan Perancangan Model Sistem Reward};
+\node (simulation) [below=of analysis] {Analisis dan Perancangan Simulasi Agen};
+\node (evolutionary) [below=of simulation] {Perancangan Algoritma Evolusioner};
+\node (evaluation) [below=of evolutionary] {Uji Coba dan Diskusi};
+\node (conclusion) [below=of evaluation] {Analisis Hasil dan Penarikan Kesimpulan};
+
+\draw[arrow] (literature) -- (analysis);
+\draw[arrow] (analysis) -- (simulation);
+\draw[arrow] (simulation) -- (evolutionary);
+\draw[arrow] (evolutionary) -- (evaluation);
+\draw[arrow] (evaluation) -- (conclusion);
+
+\end{tikzpicture}
+}
+\caption{Tahapan Penelitian.}
+\label{fig:tahapan_penelitian}
+\end{figure}
+
+
+Tahapan penelitian ini diawali dengan studi literatur yang membahas konsep ekonomi gim, sistem \textit{reward}, simulasi berbasis agen, dan algoritma evolusioner. Studi literatur ini digunakan sebagai dasar dalam menyusun spesifikasi model sistem \textit{reward} serta metode algoritma yang akan digunakan dalam penelitian. Selanjutnya dilakukan analisis dan spesifikasi model ekonomi gim, termasuk penentuan komponen sistem, hubungan antar komponen, serta representasi model menggunakan graf berarah. Tahap berikutnya adalah perancangan simulasi berbasis agen untuk merepresentasikan perilaku pemain yang berinteraksi di dalam sistem \textit{reward}. Simulasi ini dirancang untuk menghasilkan data yang menggambarkan dinamika sistem \textit{reward} berdasarkan berbagai konfigurasi parameter. Berdasarkan hasil simulasi tersebut, algoritma evolusioner digunakan untuk mengoptimasi parameter sistem \textit{reward} sesuai dengan kriteria evaluasi yang ditentukan. Tahap akhir penelitian adalah uji coba dan diskusi serta evaluasi, yang bertujuan untuk membandingkan kinerja sistem \textit{reward} hasil optimasi dengan konfigurasi awal.
+
+\section{Studi Literatur}
+Studi literatur dilakukan guna menunjang penyusunan tugas akhir serta memperdalam pemahaman mengenai \textit{balancing} sistem \textit{reward} ekonomi gim, algoritma evolusioner, dan simulasi agen. Literatur dapat berasal dari jurnal ataupun prosiding konferensi. Jurnal dan prosiding konferensi dapat diperoleh melalui basis data ilmiah seperti \href{https://ieeexplore.ieee.org/Xplore/home.jsp}{IEEE Xplore}, \href{https://link.springer.com/}{SpringerLink}, \href{https://www.sciencedirect.com/}{ScienceDirect}, serta \href{https://arxiv.org/}{arXiv}. Literatur yang dipilih dibatasi pada penelitian yang membahas simulasi dan optimasi sistem dalam konteks gim.
+
+
+\section{Analisis dan Perancangan Model Sistem \textit{Reward}}
+Perancangan model sistem \textit{reward} dilakukan dengan merepresentasikan dinamika aliran sumber daya pada tingkat mikro ke dalam bentuk graf terarah. Setiap node dalam graf memiliki fungsi tersendiri, beberapa diantaranya menghasilkan sumber daya, menyimpan, melakukan distribusi berdasarkan bobot probabilistik, melakukan konversi, serta menghilangkan sumber daya dari ekosistem. Graf dirancang agar memenuhi aturan hubungan antar node sehingga dapat digunakan sebagai dasar simulasi ekonomi gim. Hubungan antar node diwakili oleh edge yang memiliki nilai untuk merepresentasikan parameter \textit{reward} sebagai aliran sumber daya yang akan dioptimasi. Parameter ini mencakup besaran \textit{reward}, frekuensi pemberian \textit{reward}, probabilitas distribusi pada node tertentu, biaya konversi, serta nilai \textit{sink} yang memengaruhi keseimbangan atau stabilitas sistem. Setiap parameter direpresentasikan oleh nilai numerik sehingga dapat dimodifikasi langsung oleh algoritma evolusioner.
+
+\section{Analisis dan Perancangan Simulasi Agen}
+Simulasi agen dirancang untuk merepresentasikan pemain dalam berinteraksi di dalam ekosistem gim. Pemain dimodelkan sebagai agen berbasis aturan (\textit{ruled-based}) yang diberi atribut perilaku dan dipengaruhi oleh preferensi serta kecenderungan untuk melakukan suatu aksi. Simulasi dilakukan dalam beberapa langkah waktu, di mana setiap agen melakukan aksi seperti memperoleh \textit{reward}, melakukan \textit{crafting}, atau menghabiskan sumber daya. Perubahan atas hasil aksi agen direkam pada graf ekonomi dan diolah kembali untuk iterasi berikutnya.
+
+Agen dalam simulasi tidak diasumsikan bersifat homogen, 
+melainkan memiliki variasi perilaku yang 
+merepresentasikan perbedaan gaya bermain pemain. 
+Variasi ini memengaruhi probabilitas agen dalam 
+memilih aksi ekonomi, seperti menyelesaikan quest, 
+melakukan crafting, berbelanja, atau melakukan upgrade.
+
+\section{Perancangan Algoritma Evolusioner}
+Perumusan algoritma evolusioner dilakukan untuk mengoptimalisasi parameter \textit{reward} atas hasil dari simulasi agen. Setiap individu dalam populasi mewakili satu konfigurasi parameter. Evaluasi dilakukan dengan mensimulasikan ekonomi gim dengan iterasi tertentu dan kemudian dihitung menggunakan fungsi fitness berdasarkan perbedaan antara kondisi ekonomi aktual dan target yang diharapkan. Proses seleksi, crossover, dan mutasi digunakan untuk menghasilkan populasi baru yang berpotensi menciptakan konfigurasi yang lebih baik. 
+
+Integrasi antara simulasi agen dan algoritma evolusioner dilakukan dengan menghubungkan parameter yang dihasilkan oleh algoritma evolusioner dengan simulasi agen. Setiap individu dievaluasi melalui simulasi agen sehingga diperoleh metrik ekonomi yang diperlukan untuk menghitung \textit{fitness}. Fungsi \textit{fitness} dalam penelitian ini akan diadaptasi dari kerangka GEEvo 
+dengan modifikasi untuk mengakomodasi hasil simulasi agen
+
+Evaluasi sistem reward dilakukan secara terintegrasi
+melalui fungsi fitness dalam algoritma evolusioner. Tujuan penyeimbangan
+ekonomi gim direpresentasikan langsung oleh fungsi fitness, yang
+mengukur kualitas suatu konfigurasi parameter sistem reward berdasarkan
+hasil simulasi ekonomi gim.
+
+\section{Uji Coba dan Diskusi}
+Pada tahap uji coba dan diskusi, eksperimen dilakukan melalui dua tipe uji coba, yaitu uji coba menggunakan model ekonomi gim yang dibangkitkan secara generatif dan uji coba menggunakan model ekonomi gim yang telah ada sebagai data eksternal. Studi kasus untuk masukan eksternal atau model ekonomi gim yang telah ada berjumlah 2.
+Data masukan eksperimen yang dibangkitkan berupa konfigurasi struktur ekonomi, parameter sistem \textit{reward}, parameter teknis simulasi, serta tipe agen. Data masukan ini ditentukan sebelum simulasi dijalankan dan berfungsi sebagai kondisi awal eksperimen.
+
+Konfigurasi struktur ekonomi meliputi ukuran graf ekonomi secara keseluruhan serta komposisi jenis node yang digunakan, seperti node sumber (\textit{source}), node probabilistik (\textit{random gate}), node konversi sumber daya (\textit{convert}), node penyimpanan (\textit{pool}), dan node pembuangan (\textit{sinks}), yang bersama-sama menentukan kompleksitas aliran sumber daya dalam simulasi. Selain struktur ekonomi, data masukan juga mencakup parameter sistem \textit{reward} yang menjadi target optimasi, seperti nilai target sumber daya yang ingin dicapai pada \textit{pool} tertentu dalam jangka waktu simulasi tertentu serta parameter toleransi keseimbangan untuk mengatur tingkat presisi keseimbangan ekonomi, sehingga sistem tidak hanya mencapai target absolut tetapi juga mampu mempertahankan stabilitas aliran sumber daya.
+
+Eksperimen dilakukan dengan menjalankan beberapa skenario yang merepresentasikan variasi perilaku pemain pada model ekonomi. Setiap skenario dievaluasi menggunakan algoritma evolusioner untuk memperoleh konfigurasi yang optimal. Hasil data keluaran berupa deret waktu jumlah sumber daya pada setiap pool ekonomi gim serta nilai fungsi fitness pada setiap generasi algoritma evolusioner. Hasil eksperimen kemudian dibandingkan dengan kondisi awal untuk melihat peningkatan \textit{balancing} ekonomi serta dampak perubahan parameter terhadap perilaku agen. Proses ini dilakukan untuk validasi efektivitas model dalam menjaga sistem reward tetap \textit{balance}. Evaluasi dilakukan menggunakan metrik keseimbangan 
+aliran sumber daya pada pool serta nilai fitness yang 
+dihasilkan oleh algoritma evolusioner.
+
+\section{Analisis Hasil dan Penarikan Kesimpulan}
+Setelah eksperimen dilakukan, data simulasi dianalisis untuk menarik kesimpulan keberhasilan model mengoptimasi parameter. Analisis mencakup kestabilan sumber daya, keseimbangan, serta perubahan perilaku sistem sebelum dan sesudah optimasi.
+
+
+% \section{Pendekatan Penelitian}
+% Penelitian ini menggunakan pendekatan komputasional-eksperimental, di mana model ekonomi gim direpresentasikan dalam bentuk graf terarah dan dianalisis menggunakan algoritma evolusioner. Pendekatan ini dipilih karena masalah sistem \textit{reward balancing} yang bersifat non-linier, kompleks, dan melibatkan banyak parameter yang saling berinteraksi, sehingga sulit diselesaikan dengan metode analitik. 
+% Simulasi agen dilakukan untuk merepresentasikan eksperimen yang dilakukan oleh pemain dan dinamika aliran sumber daya dalam gim. Hasil simulasi menjadi dasar evaluasi fungsi \textit{fitness} untuk proses evolusi.
+
+% \section{Desain Sistem Penelitian}
+% Penelitian ini dibagi menjadi empat tahapan utama :
+% \subsection{Perancangan Struktur Ekonomi Gim Berbasis Agen}
+% Sistem ekonomi gim direpresentasikan sebagai graf terarah yang memiliki node dan edge. Node mewakili \textit{source, pool, converter, random gate,} dan \textit{drain}. 
+% % \textit{Source} berfungsi untuk menciptakan sumber daya dan memasukkannya ke dalam sistem ekonomi, \textit{pool} sama seperti \textit{inventory} untuk menyimpan sumber daya ke dalam ekosistem pemain, \textit{converter} berfungsi untuk mengubah jenis sumber daya, \textit{random gate} berfungsi mendistribusikan sumberdaya berdasarkan bobot probabilitas, \textit{drain} merupakan nama lain dari sinks yang berfungsi menghapus sumber daya dari sistem. 
+% \subsection{Formulasi Parameter Reward yang Akan Dioptimasi}
+% Beberapa parameter reward yang akan dioptimasi diantaranya :
+% \begin{itemize}
+%     \item frekuensi \textit{reward},
+%     \item distribusi probabilitas loot,
+%     \item biaya \textit{upgrade (sink)},
+%     \item konversi \textit{crafting},
+%     \item progresi ekonomi pemain.
+% \end{itemize}
+
+% \subsection{Simulasi Agen untuk Mengukur Dampak \textit{Reward}}
+% Setiap iterasi menghasilkan data berupa :
+% \begin{itemize}
+%     \item distribusi kekayaan agen,
+%     \item progresi pemain,
+%     \item retensi agen,
+%     \item stabilitas ekonomi makro.
+% \end{itemize}
+% \subsection{Optimasi dengan Algoritma Evolusioner}
+% Digunakan algoritma evolusioner untuk mencari konfigurasi terbaik berdasarkan \textit{multi-objective fitness}
+% \section{Model Ekonomi Gim}
+% Model ekonomi gim direpresentasikan dalam sistem graf terarah, di mana setiap elemen ekonomi gim dimodelkan sebagai node dengan perilaku spesifik.
+
+% \[
+% G = (V,E)
+% \]
+% dengan,
+% \begin{itemize}
+%     \item \(V\): node yang merepresntasikan elemen ekonomi gim
+%     \item \(E\): edge yang merepresentasikan aliran sumber daya
+% \end{itemize}
+% \subsection{Representasi Node}
+% Beberapa definisi node yang digunakan dalam model ekonomi gim ini :
+% \begin{itemize}
+%     \item \textit{Source} : berfungsi untuk menciptakan sumber daya dan memasukkannya ke dalam sistem ekonomi.
+%     \item \textit{Random Gate} : berfungsi mendistribusikan sumberdaya berdasarkan bobot probabilitas.
+%     \item \textit{Pool} : sama seperti \textit{inventory} untuk menyimpan sumber daya ke dalam ekosistem pemain.
+%     \item \textit{Converter} : berfungsi untuk mengubah jenis sumber daya.
+%     \item \textit{Drain} : merupakan nama lain dari sinks yang berfungsi menghapus sumber daya dari sistem.
+% \end{itemize}
+
+% \section{Perancangan Agen}
+% Setiap agen merepresentasikan pemain yang memiliki atribut :
+% \begin{itemize}
+%     \item tingkat aktivitas,
+%     \item preferensi reward,
+%     \item probabilitas interaksi,
+%     \item retensi dan durasi bermain. 
+% \end{itemize}
+% Dalam setiap simulasi, agen perilaku yang akan dilakukan agen diantaranya :
+% \begin{itemize}
+%     \item melakukan aksi (\textit{quest, crafting, upgrade}),
+%     \item menerima reward,
+%     \item menghabiskan sumber daya (\textit{sink}),
+%     \item memperbarui status progres dan engagement.
+% \end{itemize}
+% Perilaku yang dilakukan agen sederhana tetapi cukup untuk merepresntasikan dinamika ekonomi gim yang kompleks.
+
+% \section{Algoritma Evolusioner Untuk Optimasi Reward}
+% \subsection{Representasi Individu}
+% Setiap individu merepresentasikan kombinasi parameter \textit{reward}, seperti :
+% \begin{itemize}
+%     \item jumlah reward,
+%     \item probabilitas random gate,
+%     \item biaya crafting,
+%     \item rasio \textit{sink-reward},
+%     \item interval pemberian \textit{reward}
+% \end{itemize}
+% Semua parameter disimpan sebagai vektor bilangan real positif.
+
+% \subsection{Inisialisasi Populasi}
+% Populasi awal dibuat secara acak dengan ukuran N.
+% Setiap individu kemudian diuji melalui simulasi untuk mendapatkan nilai fitness awal.
+
+% \subsection{Evaluasi \textit{Fitness}}
+% \textit{Fitness} didefinisikan berdasarkan kemampuan gim mencapai keseimbangan.
+% \subsubsection{Fitness Menuju Target Reward}
+% Fungsi fitness utama yang digunakan :
+% \[
+% f_1(s_t^{pj},x)= \alpha+\frac{1}{m}\sum_{i=1}^m prop(s_t^{pj},x)
+% \]
+% dengan fungsi proporsional:
+
+% \[
+% prop(s_t^{p_j}, x) =
+% \begin{cases}
+% \frac{s_t^{p_j}}{x}, & x>0 \text{ jika } x>s_t^{p_j} \\[6pt]
+% \frac{x}{s_t^{p_j}}, & s_t^{p_j}>0 \text{ jika } x \le s_t^{p_j}
+% \end{cases}
+% \]
+
+% Interpretasi :
+% \begin{itemize}
+%     \item Nilai fitness terbaik = \(\alpha+1\)
+%     \item semakin mendekati \(\alpha+1\), semakin seimbang parameter reward
+% \end{itemize}
+% \subsubsection{Fitness Untuk Dua Ekonomi Sekaligus}
+% Jika dua ekonomi harus diseimbangkan:
+% \[
+% f_2(s_t^{p_j},s_t^{p_k})=f_1(s_t^{p_j},s_t^{p_k})
+% \]
+% Digunakan untuk perbandingan kelas atau sistem reward berbeda.
+
+% \subsection{Seleksi}
+% Metode seleksi seperti tournament selection atau roulette wheel digunakan untuk memilih individu dengan fitness terbaik
+
+% \subsection{\textit{Crossover}}
+% Parameter dari dua individu digabungkan menggunakan mekanisme rekombinasi untuk menghasilkan keturunan baru.
+
+% \subsection{Mutasi}
+% Mutasi dilakukan dengan :
+% \begin{itemize}
+%     \item menambahkan \textit{noise} kecil ke parameter,
+%     \item mengubah probabilitas \textit{reward},
+%     \item mengubah frekuensi distribusi.
+% \end{itemize}
+
+% \subsection{Terminasi}
+% Algoritma berhenti jika memenuhi kondisi :
+% \begin{itemize}
+%     \item jumlah generasi maksimum tercapai, atau
+%     \item nilai fitness stabil dan tidak lagi meningkat signifikan.
+% \end{itemize}

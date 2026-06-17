@@ -1,0 +1,165 @@
+\chapter*{Daftar Simbol}
+\begin{center}
+\small % Kurangi ukuran font
+\renewcommand{\arraystretch}{1.05} % Kurangi jarak baris dari 1.2
+\setlength{\tabcolsep}{4pt} % Kurangi padding dari 6pt
+\begin{tabular}{p{2.5cm}p{0.2cm}p{10cm}} % Kurangi lebar kolom pertama
+$G = (V, E)$ & : & Graf berarah yang merepresentasikan ekonomi gim dengan himpunan vertex $V$ dan himpunan edge $E$ \\
+$V$ & : & Himpunan vertex (node) dalam graf ekonomi gim \\
+$E$ & : & Himpunan edge (sisi) berarah dalam graf \\
+$v_i$ & : & Vertex ke-$i$ dalam graf, merepresentasikan komponen ekonomi \\
+$n$ & : & Jumlah node dalam graf ekonomi gim \\
+$w_{ij}$ & : & Bobot aliran sumber daya dari node $i$ ke node $j$ \\
+$W$ & : & Matriks bobot aliran antar node: $W = [w_{ij}]_{n \times n}$ \\
+$\text{Outflow}(v_i)$ & : & Jumlah total aliran keluar dari node $v_i$: $\sum_{j=1}^{n} w_{ij}$ \\
+$\text{Inflow}(v_i)$ & : & Jumlah total aliran masuk ke node $v_i$: $\sum_{j=1}^{n} w_{ji}$ \\
+$f(G)$ & : & Fungsi objektif untuk optimasi keseimbangan graf \\
+$P_0$ & : & Populasi awal dalam algoritma evolusioner \\
+$P_t$ & : & Populasi pada generasi ke-$t$ \\
+$P_{t+1}$ & : & Populasi pada generasi ke-$(t+1)$ hasil evolusi \\
+$x_i$ & : & Individu (solusi kandidat) ke-$i$ dalam populasi \\
+$x^*$ & : & Solusi optimal hasil algoritma evolusioner \\
+$f_{\text{gen}}(G)$ & : & Fungsi fitness pada tahap \textit{generator} untuk mengevaluasi validitas struktur graf ekonomi gim \\
+$\mathrm{validate}(v)$ & : & Fungsi bantu yang menghitung jumlah batasan yang tidak terpenuhi oleh node $v$ \\
+$f_1(s^{p_j}_t, x)$ & : & Fungsi fitness pada tahap \textit{balancer} untuk mengukur kedekatan nilai sumber daya terhadap target absolut \\
+$s^{p_j}_t$ & : & Jumlah sumber daya dalam pool $p_j$ pada waktu ke-$t$ hasil simulasi ekonomi gim \\
+$p_j$ & : & Pool sumber daya ke-$j$ dalam graf ekonomi gim \\
+$x$ & : & Nilai target absolut yang ingin dicapai oleh sumber daya (misal jumlah \textit{gold}) \\
+$\alpha$ & : & Parameter ambang batas (\textit{threshold}) untuk toleransi rata-rata hasil simulasi pada fungsi fitness \\
+$m$ & : & Jumlah simulasi yang dijalankan untuk mengurangi pengaruh keacakan (\textit{randomness}) \\
+$i$ & : & Indeks simulasi ke-$i$ dalam perhitungan rata-rata fitness \\
+$\mathrm{prop}(s^{p_j}_t, x)$ & : & Fungsi proporsional untuk mengukur kedekatan nilai sumber daya terhadap target \\
+$N$ & : & Ukuran populasi dalam algoritma evolusioner \\
+$f(\cdot)$ & : & Fungsi fitness untuk evaluasi kualitas individu \\
+$p_c$ & : & Probabilitas crossover dalam algoritma evolusioner \\
+$p_m$ & : & Probabilitas mutasi dalam algoritma evolusioner \\
+$x_i'$ & : & Individu hasil mutasi dari $x_i$ \\
+$\epsilon$ & : & Variabel acak dari distribusi normal untuk mutasi \\
+$\sigma^2$ & : & Variansi untuk operasi mutasi \\
+$\mathcal{N}(0, \sigma^2)$ & : & Distribusi normal dengan mean 0 dan variansi $\sigma^2$ \\
+\end{tabular}
+\end{center}
+% \newpage
+% \begin{center}
+% \renewcommand{\arraystretch}{1.2}
+% \setlength{\tabcolsep}{6pt}
+% \begin{tabular}{p{3cm}p{0.3cm}p{11cm}}
+
+% % $O(\cdot)$ & : & Notasi kompleksitas waktu asimtotik \\
+% \end{tabular}
+% \end{center}
+
+
+
+% \begin{table}[htbp]
+%     \begin{tabular}{lcl}
+%         $\mu$ & : & Nilai rata-rata\\
+%         $\sigma$ & : & Nilai standar deviasi\\
+%     \end{tabular}
+% \end{table}
+% \clearpage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Daftar Simbol}
+
+% % \newgeometry{left=2.2cm,right=2.2cm,top=3cm,bottom=3cm}
+
+% \vspace*{-1cm} % naikkan posisi jika terlalu ke bawah
+% \begin{center}
+% \Large\bfseries DAFTAR SIMBOL
+% \end{center}
+
+% \vspace{0.8cm}
+
+% \small
+% \renewcommand{\arraystretch}{1.2}
+% \setlength{\tabcolsep}{6pt}
+
+% \begin{center}
+% \begin{tabular}{p{3cm} p{11.5cm}}
+% $G = (V,E,w)$ & Graf berbobot dengan himpunan simpul $V$, himpunan sisi $E$, dan fungsi bobot $w$ \\
+% $N, A$ & Himpunan simpul (nodes) dan busur (arcs) pada graf \\
+% $s, g$ & Simpul awal (\textit{start}) dan simpul tujuan (\textit{goal}) \\
+% $\Gamma$ & Himpunan simpul tujuan \\
+% $c(u,v)$ & Biaya (cost) dari simpul $u$ ke simpul $v$ \\
+% $\vec{c}(u,v)$ & Vektor biaya berdimensi jamak (\textit{multi-objective cost vector}) \\
+% $\vec{g}(n)$ & Vektor biaya aktual dari simpul awal ke simpul $n$ \\
+% $g(n)$ & Biaya aktual kumulatif dari simpul awal ke simpul $n$ \\
+% $h(n)$ & Nilai heuristik (estimasi biaya dari simpul $n$ ke tujuan) \\
+% $H(n)$ & Himpunan vektor heuristik pada simpul $n$ dalam MOA* \\
+% $f(n)$ & Fungsi evaluasi total: $f(n) = g(n) + h(n)$ \\
+% $F(P_{sn})$ & Himpunan nilai evaluasi tidak terdominasi dari jalur $P_{sn}$ \\
+% $\vec{f}$ & Vektor fungsi evaluasi dalam ruang multiobjektif \\
+% $\prec$ & Relasi dominasi Pareto (lebih baik pada setidaknya satu dimensi dan tidak lebih buruk pada lainnya) \\
+% $\text{ND}(X)$ & Himpunan vektor tidak terdominasi dari himpunan $X$ \\
+% $\mathcal{S}^*$ & Himpunan solusi Pareto-optimal \\
+% $G_{op}(n)$ & Label aktif pada simpul $n$ yang belum diekspansi (OPEN set) \\
+% $G_{cl}(n)$ & Label yang telah dievaluasi (CLOSED set) \\
+% $\mathcal{G}$ & Himpunan solusi Pareto sementara dari setiap \textit{thread} dalam PMOA* \\
+% $\mathbf{UB}$ & Vektor batas atas global untuk setiap dimensi biaya \\
+% $d$ & Jumlah objektif atau dimensi biaya dalam MOA* / PMOA* \\
+% $\mathbf{c}_i$ & Urutan vektor biaya yang dirotasi siklik untuk \textit{thread} ke-$i$ \\
+% $\lceil \mathbf{c} \rceil_k$ & Operator \textit{truncation} untuk reduksi dimensi hingga $k$ kali \\
+% $\text{OPEN}$ & Himpunan simpul yang ditemukan tetapi belum dievaluasi \\
+% $\text{CLOSED}$ & Himpunan simpul yang telah dievaluasi \\
+% $\text{Pareto set}$ & Himpunan solusi tidak terdominasi (\textit{Pareto front}) \\
+% $\text{BBST}$ & Struktur data \textit{Balanced Binary Search Tree} (digunakan pada EMOA*) \\
+% PMOA* & \textit{Parallel Multi-Objective A* Search} \\
+% MOA* & \textit{Multi-Objective A* Search} \\
+% NAMOA* & \textit{New Approach to Multi-Objective A*} \\
+% BOA* & \textit{Bi-Objective A*} \\
+% EMOA* & \textit{Enhanced Multi-Objective A*} \\
+% LTMOA* & \textit{Lazy Truncated Multi-Objective A*} \\
+% NWMOA* & \textit{Non-Weighted Multi-Objective A*} \\
+% $O(\cdot)$ & Notasi kompleksitas waktu asimtotik \\
+% \end{tabular}
+% \end{center}
+
+% \restoregeometry
+
+
+% % \usepackage{tabularx}
+% \clearpage  
+% \chapter*{Daftar Simbol}
+% \begin{center}
+% \begin{tabularx}{\textwidth}{l c X}
+% $G = (V, E, w)$ & : & Graf berbobot dengan himpunan simpul $V$, himpunan sisi $E$, dan fungsi bobot $w$ \\[3pt]
+% $N, A$ & : & Himpunan simpul (\textit{nodes}) dan busur (\textit{arcs}) pada graf \\[3pt]
+% $s, g$ & : & Simpul awal (\textit{start}) dan simpul tujuan (\textit{goal}) \\[3pt]
+% $\Gamma$ & : & Himpunan simpul tujuan \\[3pt]
+% $c(u,v)$ & : & Biaya (\textit{cost}) dari simpul $u$ ke simpul $v$ \\[3pt]
+% $\vec{c}(u,v)$ & : & Vektor biaya multidimensi (\textit{multi-objective cost vector}) \\[3pt]
+% $\vec{g}(n)$ & : & Vektor biaya aktual dari simpul awal ke simpul $n$ \\[3pt]
+% $g(n)$ & : & Biaya aktual kumulatif dari simpul awal ke simpul $n$ \\[3pt]
+% $h(n)$ & : & Nilai heuristik (estimasi biaya dari simpul $n$ ke simpul tujuan) \\[3pt]
+% $H(n)$ & : & Himpunan vektor heuristik pada simpul $n$ dalam MOA* \\[3pt]
+% $f(n)$ & : & Fungsi evaluasi total: $f(n) = g(n) + h(n)$ \\[3pt]
+% $F(P_{sn})$ & : & Himpunan nilai evaluasi tidak terdominasi dari jalur $P_{sn}$ \\[3pt]
+% $\vec{f}$ & : & Vektor fungsi evaluasi dalam ruang multiobjektif \\[3pt]
+% $\prec$ & : & Relasi dominasi Pareto (lebih baik pada satu dimensi dan tidak lebih buruk pada lainnya) \\[3pt]
+% $\text{ND}(X)$ & : & Himpunan vektor tidak terdominasi dari himpunan $X$ \\[3pt]
+% $\mathcal{S}^*$ & : & Himpunan solusi Pareto-optimal \\[3pt]
+% $G_{op}(n)$ & : & Label aktif pada simpul $n$ yang belum diekspansi (\textit{OPEN set}) \\[3pt]
+% $G_{cl}(n)$ & : & Label yang telah dievaluasi (\textit{CLOSED set}) \\[3pt]
+% $\mathcal{G}$ & : & Himpunan solusi Pareto sementara dari setiap \textit{thread} dalam PMOA* \\[3pt]
+% $\mathbf{UB}$ & : & Vektor batas atas global untuk setiap dimensi biaya \\[3pt]
+% $d$ & : & Jumlah objektif atau dimensi biaya dalam MOA*/PMOA* \\[3pt]
+% $\mathbf{c}_i$ & : & Urutan vektor biaya yang dirotasi siklik untuk \textit{thread} ke-$i$ \\[3pt]
+% $\lceil \mathbf{c} \rceil_k$ & : & Operator \textit{truncation} untuk reduksi dimensi hingga $k$ kali \\[3pt]
+% $\text{OPEN}$ & : & Himpunan simpul yang ditemukan tetapi belum dievaluasi \\[3pt]
+% $\text{CLOSED}$ & : & Himpunan simpul yang telah dievaluasi \\[3pt]
+% $\text{Pareto set}$ & : & Himpunan solusi tidak terdominasi (\textit{Pareto front}) \\[3pt]
+% $\text{BBST}$ & : & Struktur data \textit{Balanced Binary Search Tree} (digunakan pada PMOA*) \\[3pt]
+% PMOA* & : & \textit{Parallel Multi-Objective A* Search} \\[3pt]
+% MOA* & : & \textit{Multi-Objective A* Search} \\[3pt]
+% NAMOA* & : & \textit{New Approach to Multi-Objective A*} \\[3pt]
+% BOA* & : & \textit{Bi-Objective A*} \\[3pt]
+% EMOA* & : & \textit{Enhanced Multi-Objective A*} \\[3pt]
+% LTMOA* & : & \textit{Lazy Truncated Multi-Objective A*} \\[3pt]
+% NWMOA* & : & \textit{Non-Weighted Multi-Objective A*} \\[3pt]
+% $O(\cdot)$ & : & Notasi kompleksitas waktu asimtotik \\
+% \end{tabularx}
+% \end{center}
+% % \addcontentsline{toc}{chapter}{Daftar Simbol}
+
+
+

@@ -1,0 +1,4 @@
+Alpha (α),Balanced %,Initial Balanced %,Improved %,Median Generation,Median Execution Time (s),Fitness Std Dev
+0.05,30.0%,0.0%,100.0%,500.0,18.004,0.0507
+0.01,20.0%,0.0%,100.0%,500.0,3.575,0.0229
+0.0,0.0%,0.0%,90.0%,500.0,5.084,0.2827

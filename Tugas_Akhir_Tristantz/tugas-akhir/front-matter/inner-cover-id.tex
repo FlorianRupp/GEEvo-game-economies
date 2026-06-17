@@ -1,0 +1,74 @@
+\makeatletter
+\thispagestyle{empty}
+
+{
+\begin{tikzpicture}[remember picture, overlay]
+
+    %%%%%%%%%%%%%%%
+    % Daerah Konten
+    %%%%%%%%%%%%%%%
+    \fill[itsblue] ([yshift=\topseparator] current page.north west) rectangle ++(\paperwidth, -1cm);
+    \node[anchor=north west, text width=\paperwidth-2.3in, color=black, font=, align=justify] at ([xshift = \titleimagepadding/0.7, yshift=\topseparator-\textpadding/0.7] current page.north west) {%
+        \setstretch{1.5}\noindent
+        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{Tugas Akhir --- \kode@TA}}}}
+
+        \vspace{0.07\paperheight}
+        {\fontsize{\titlefontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{\@judul}}}}
+
+        \vspace{0.1\paperheight}
+        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\MakeUppercase{\@nama}}}}
+        
+        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{NRP. \@NRP}}
+
+        \vspace{0.07\paperheight}
+
+        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{Dosen Pembimbing}}
+        
+        \ifthenelse{\equal{\pbb@tiga}{}\OR\equal{\pbb@tiga}{ }}
+            {
+                \ifthenelse{\equal{\pbb@dua}{}\OR\equal{\pbb@dua}{ }}
+                    {
+                        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}
+                        
+                    }
+                    {
+                        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}
+                        
+                        {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@dua}\\ NIP. \NIP@pbb@dua}}
+                    }
+            }
+            {
+                {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@satu}\\ NIP. \NIP@pbb@satu}}
+                
+                {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@dua}\\ NIP. \NIP@pbb@dua}}
+                
+                {\fontsize{\coverfontsize}{\fontbaselineskip}\selectfont{\textbf{\pbb@tiga}\\ NIP. \NIP@pbb@tiga}}
+                
+            }
+        
+        \vspace{0.05\paperheight}
+
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{\textbf{Program Sarjana}}}
+                
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Departemen~\@departemen}}
+        
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Fakultas~\@fakultas}}
+        
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Institut Teknologi Sepuluh Nopember}}
+        
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{Surabaya}}
+
+        \vspace{0.01\paperheight}
+        {\fontsize{\regularfontsize}{\fontbaselineskip}\selectfont{\@tahun}}
+    };
+    
+    %%%%%%%%%%%%%%%
+    % Daerah Gambar
+    %%%%%%%%%%%%%%%
+    \fill[white] (current page.north west) rectangle ++(\paperwidth, \topseparator);
+
+    % Logo ITS
+    \node[anchor=north west] at ([xshift=\titleimagepadding, yshift=\topseparator/2+\ITSsize/2] current page.north west) {\includegraphics[height = \ITSsize]{tugas-akhir/assets/images/its.png}};
+\end{tikzpicture}}
+\newpage
+\makeatother
